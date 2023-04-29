@@ -1,5 +1,10 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+export const Image = styled.img`
+  width: 10rem;
+  height: 10rem;
+`;
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -50,7 +55,7 @@ export const FormContainer = styled.div`
   max-width: 350px;
   width: 22rem;
   height: 26rem;
-  border: 1px solid #49d69b;
+  border: 3px solid #49d69b;
   border-radius: 1.5rem;
 `;
 export const ChangeForm = styled.div`
@@ -60,6 +65,11 @@ export const ChangeForm = styled.div`
   margin-top: 0.5rem;
   width: 22rem;
   height: 3rem;
-  border: 1px solid #49d69b;
+  border: 3px solid #49d69b;
   border-radius: 1.5rem;
+`;
+
+export const GoPage = styled(Link)`
+  text-decoration: underline;
+  color: #69f0ae;
 `;

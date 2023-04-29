@@ -1,12 +1,17 @@
-import Login from "./page/LoginPage";
-import SignUp from "./page/SignUpPage";
+import { RecoilRoot } from "recoil";
+
+import { BrowserRouter } from "react-router-dom";
+import PageNavigator from "./page/PageNavigator";
+import Header from "./components/Header";
 
 function App() {
   return (
-    <>
-      <Login />
-      <SignUp />
-    </>
+    <RecoilRoot>
+      <BrowserRouter>
+        <Header />
+        <PageNavigator />
+      </BrowserRouter>
+    </RecoilRoot>
   );
 }
 

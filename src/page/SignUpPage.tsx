@@ -1,5 +1,3 @@
-import styled from "styled-components";
-import logo from "../assets/random.png";
 import {
   Container,
   Wrap,
@@ -9,23 +7,17 @@ import {
   ChangeForm,
   NameLabel,
   MiniButton,
+  GoPage,
 } from "../styledComponents/SignUpIn";
-import { Image } from "./LoginPage";
 
-const Title = styled.h1`
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  font-size: 1.5rem;
-  text-align: center;
-  margin-bottom: 1rem;
-`;
+import Logo from "../components/Logo";
+
 const SignUp = () => {
   return (
     <Container>
       <Wrap>
         <FormContainer>
-          <Image src={logo} />
+          <Logo />
           <Form>
             <NameLabel htmlFor="email">
               이메일
@@ -55,7 +47,7 @@ const SignUp = () => {
         </FormContainer>
         <ChangeForm>
           <p>
-            계정이 있으신가요? <a>로그인</a>
+            계정이 있으신가요? <GoPage to={"/logIn"}>로그인</GoPage>
           </p>
         </ChangeForm>
       </Wrap>

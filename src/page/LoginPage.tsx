@@ -1,22 +1,19 @@
 import styled from "styled-components";
-import logo from "../assets/random.png";
+
 import {
   ChangeForm,
   Container,
   Form,
   FormContainer,
+  GoPage,
   Input,
   MiniButton,
   NameLabel,
   Wrap,
 } from "../styledComponents/SignUpIn";
+import Logo from "../components/Logo";
 
-export const Image = styled.img`
-  width: 10rem;
-  height: 10rem;
-`;
-
-const Divd = styled.div`
+const Divider = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,12 +29,16 @@ const Line = styled.div`
 const Text = styled.div`
   margin: 0 18px;
 `;
+const LogoTitle = styled(Logo)`
+  width: 8rem;
+  height: 3rem;
+`;
 const Login = () => {
   return (
     <Container>
       <Wrap>
         <FormContainer>
-          <Image src={logo} />
+          <LogoTitle />
           <Form>
             <NameLabel>
               이메일
@@ -48,17 +49,17 @@ const Login = () => {
               <Input type="password" placeholder="비밀번호을 입력해주세요" />
             </NameLabel>
             <MiniButton>로그인</MiniButton>
-            <Divd>
+            <Divider>
               <Line></Line>
               <Text>또는</Text>
               <Line></Line>
-            </Divd>
+            </Divider>
             <button>구글로 로그인하기</button>
           </Form>
         </FormContainer>
         <ChangeForm>
           <p>
-            계정이 없으신가요? <a>회원가입</a>
+            계정이 없으신가요? <GoPage to={"/signUp"}>회원가입</GoPage>
           </p>
         </ChangeForm>
       </Wrap>
