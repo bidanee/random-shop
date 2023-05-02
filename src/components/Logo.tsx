@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Image } from "../styledComponents/SignUpIn";
-import logo from "../assets/random.png";
+import logo from "../assets/logo/random.png";
 
 const Logo = () => {
   return (
