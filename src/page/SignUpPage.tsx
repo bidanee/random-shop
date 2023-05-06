@@ -35,8 +35,7 @@ const SignUp = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, pwd)
-      .then((res) => {
-        console.log(res.user.displayName);
+      .then(() => {
         alert("회원가입 성공");
         navigate("/logIn");
       })

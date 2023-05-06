@@ -8,6 +8,7 @@ import SignUp from "./page/SignUpPage";
 import Login from "./page/LoginPage";
 import Cart from "./page/CartPage";
 import MyPage from "./page/MyPage";
+import ChoiceItem from "./page/ChoiceItemPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/logIn" element={<Login />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/mypage" element={<MyPage />} />
+            <Route path="/choice" element={<ChoiceItem />}></Route>
           </Routes>
         </section>
       </BrowserRouter>
