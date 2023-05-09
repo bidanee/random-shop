@@ -1,23 +1,21 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
-interface itemProps {
+import {
+  List,
+  ItemContainer,
+  Title,
+  CardContainer,
+  ItemCard,
+  Img,
+} from "../styledComponents/CardStyled";
+export interface itemProps {
   id: number;
   name: string;
   image: string;
   price: number;
-  new: string;
+  new: boolean;
 }
 [];
-const Img = styled.img`
-  height: 300px;
-  width: 300px;
-`;
-const List = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  padding-top: 5rem;
-`;
+
 const ChoiceItem = () => {
   const [items, setItems] = useState<itemProps[]>([]);
   useEffect(() => {
@@ -27,15 +25,32 @@ const ChoiceItem = () => {
         setItems(data);
       });
   }, []);
+  const FilterItem = items.filter((item) => item.new === true);
   return (
     <List>
-      {items.map((item) => (
-        <div key={item.id}>
-          <Img src={item.image} />
-          <p>{item.name}</p>
-          <p>{item.price} 원</p>
-        </div>
-      ))}
+      <ItemContainer>
+        <Title>NEW ITEM</Title>
+        <CardContainer>
+          {FilterItem.map((item) => (
+            <ItemCard key={item.id}>
+              <Img src={item.image} />
+              <p>{item.name}</p>
+              <p>{item.price} 원</p>
+            </ItemCard>
+          ))}
+        </CardContainer>
+      </ItemContainer>
+      <ItemContainer>
+        <CardContainer>
+          {items.map((item) => (
+            <ItemCard key={item.id}>
+              <Img src={item.image} />
+              <p>{item.name}</p>
+              <p>{item.price} 원</p>
+            </ItemCard>
+          ))}
+        </CardContainer>
+      </ItemContainer>
     </List>
   );
 };

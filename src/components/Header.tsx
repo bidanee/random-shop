@@ -1,12 +1,17 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
-
+const Logo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const InfoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
+  font-size: 15px;
 `;
 const Nav = styled.nav`
   display: flex;
@@ -24,21 +29,26 @@ const NavContainer = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0 3rem;
 `;
 
 const Title = styled(Link)`
+  padding-top: 0.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-left: 1rem;
+  margin-left: 3rem;
   margin-right: 1rem;
   font-size: 1.125rem;
   line-height: 1.75rem;
   font-weight: 700;
   white-space: nowrap;
   color: #3ded97;
+`;
+const Input = styled.input`
+  width: 10rem;
+  font-size: 15px;
 `;
 
 const Header = () => {
@@ -50,10 +60,12 @@ const Header = () => {
   return (
     <Nav>
       <NavContainer>
-        <GiHamburgerMenu size={24} />
-        <Title to={"/"}>LandomMeal</Title>
+        <Logo>
+          <GiHamburgerMenu size={24} />
+          <Title to={"/"}>LandomMeal</Title>
+        </Logo>
         <label>
-          <input placeholder="검색창임" />
+          <Input placeholder="검색창임" />
           <span></span>
         </label>
         <InfoContainer>

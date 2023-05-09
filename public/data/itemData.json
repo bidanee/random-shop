@@ -1,5 +1,6 @@
 [
   {
+    "new": false,
     "id": 0,
     "category": "diet",
     "name": "콥 샐러드",
@@ -8,6 +9,7 @@
     "price": 5800
   },
   {
+    "new": false,
     "id": 1,
     "category": "diet",
     "name": "두부유부초밥",
@@ -16,6 +18,7 @@
     "price": 4700
   },
   {
+    "new": true,
     "id": 2,
     "category": "diet",
     "name": "곤약국수",
@@ -24,6 +27,7 @@
     "price": 6800
   },
   {
+    "new": false,
     "id": 3,
     "category": "diet",
     "name": "단호박에그슬럿",
@@ -32,6 +36,7 @@
     "price": 6200
   },
   {
+    "new": false,
     "id": 4,
     "category": "diet",
     "name": "두부면파스타",
@@ -40,6 +45,7 @@
     "price": 6900
   },
   {
+    "new": false,
     "id": 5,
     "category": "asian",
     "name": "쏨땀",
@@ -48,6 +54,7 @@
     "price": 6000
   },
   {
+    "new": true,
     "id": 6,
     "category": "asian",
     "name": "뿌팟퐁커리",
@@ -56,6 +63,7 @@
     "price": 8300
   },
   {
+    "new": false,
     "id": 7,
     "category": "asian",
     "name": "양지쌀국수",
@@ -64,6 +72,7 @@
     "price": 5800
   },
   {
+    "new": false,
     "id": 8,
     "category": "asian",
     "name": "나시고렝",
@@ -72,6 +81,7 @@
     "price": 9900
   },
   {
+    "new": false,
     "id": 9,
     "category": "asian",
     "name": "똠양꿍",
@@ -80,6 +90,7 @@
     "price": 7000
   },
   {
+    "new": false,
     "id": 10,
     "category": "japanese",
     "name": "오꼬노미야끼",
@@ -88,6 +99,7 @@
     "price": 8300
   },
   {
+    "new": true,
     "id": 11,
     "category": "japanese",
     "name": "소바",
@@ -96,6 +108,7 @@
     "price": 7700
   },
   {
+    "new": false,
     "id": 12,
     "category": "japanese",
     "name": "명란 오차즈케",
@@ -104,6 +117,7 @@
     "price": 8300
   },
   {
+    "new": false,
     "id": 13,
     "category": "japanese",
     "name": "라멘",
@@ -112,6 +126,7 @@
     "price": 8400
   },
   {
+    "new": false,
     "id": 14,
     "category": "japanese",
     "name": "스키야끼",
@@ -120,6 +135,7 @@
     "price": 10100
   },
   {
+    "new": false,
     "id": 15,
     "category": "chinese",
     "name": "마라탕",
@@ -128,6 +144,7 @@
     "price": 11100
   },
   {
+    "new": false,
     "id": 16,
     "category": "chinese",
     "name": "탄탄면",
@@ -136,6 +153,7 @@
     "price": 8800
   },
   {
+    "new": false,
     "id": 17,
     "category": "chinese",
     "name": "고추잡채",
@@ -144,6 +162,7 @@
     "price": 9300
   },
   {
+    "new": false,
     "id": 18,
     "category": "chinese",
     "name": "마파두부",
@@ -152,6 +171,7 @@
     "price": 5700
   },
   {
+    "new": false,
     "id": 19,
     "category": "chinese",
     "name": "훈툰",
@@ -160,6 +180,7 @@
     "price": 6600
   },
   {
+    "new": false,
     "id": 20,
     "category": "korean",
     "name": "콩나물불고기",
@@ -168,6 +189,7 @@
     "price": 7700
   },
   {
+    "new": false,
     "id": 21,
     "category": "korean",
     "name": "비빔밥",
@@ -176,6 +198,7 @@
     "price": 9500
   },
   {
+    "new": false,
     "id": 22,
     "category": "korean",
     "name": "바지락된장찌개",
@@ -184,6 +207,7 @@
     "price": 8500
   },
   {
+    "new": false,
     "id": 23,
     "category": "korean",
     "name": "오삼불고기",
@@ -192,6 +216,7 @@
     "price": 10000
   },
   {
+    "new": false,
     "id": 24,
     "category": "korean",
     "name": "소불고기",
@@ -200,6 +225,7 @@
     "price": 9900
   },
   {
+    "new": false,
     "id": 25,
     "category": "western",
     "name": "안심스테이크",
@@ -208,6 +234,7 @@
     "price": 14000
   },
   {
+    "new": true,
     "id": 26,
     "category": "western",
     "name": "슈림프아라비아따",
@@ -216,6 +243,7 @@
     "price": 7000
   },
   {
+    "new": false,
     "id": 27,
     "category": "western",
     "name": "버섯크림리조토",
@@ -224,6 +252,7 @@
     "price": 7000
   },
   {
+    "new": false,
     "id": 28,
     "category": "western",
     "name": "마르게리따피자",
@@ -232,6 +261,7 @@
     "price": 8500
   },
   {
+    "new": false,
     "id": 29,
     "category": "western",
     "name": "라자냐",

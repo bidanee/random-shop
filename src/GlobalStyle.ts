@@ -28,6 +28,9 @@ const GlobalStyles = createGlobalStyle`
     vertical-align: baseline;
     color:black;
   }
+  *{
+    box-sizing:border-box;
+  }
 `;
 
 export default GlobalStyles;
