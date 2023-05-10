@@ -41,6 +41,7 @@ const ChoiceItem = () => {
         </CardContainer>
       </ItemContainer>
       <ItemContainer>
+        <div></div>
         <CardContainer>
           {items.map((item) => (
             <ItemCard key={item.id}>

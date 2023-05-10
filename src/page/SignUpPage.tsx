@@ -13,50 +13,83 @@ import {
 import Logo from "../components/Logo";
 import { useState } from "react";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase/firebaseSetup";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth, db } from "../firebase/firebaseSetup";
 import { useNavigate } from "react-router";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 const SignUp = () => {
-  const navigate = useNavigate();
+  const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [confirmedPwd, setConfirmedPwd] = useState("");
 
-  const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setEmail(e.target.value);
+  const navigate = useNavigate();
+
+  const checkNickName = async (nickname: string) => {
+    try {
+      const que = query(
+        collection(db, "user"),
+        where("nickname", "==", nickname)
+      );
+      const queryDocs = await getDocs(que);
+      return queryDocs.docs.length > 0;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   };
-
-  const handlePwd = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleJoin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setPwd(e.target.value);
+    if (pwd !== confirmedPwd) {
+      setErrorMessage("비밀번호가 일치하지 않습니다");
+      return;
+    }
+    const isNicknameDuplicated = await checkNickName(nickname);
+    if (isNicknameDuplicated) {
+      setErrorMessage("중복된 닉네임입니다.");
+      return;
+    }
+    try {
+      setErrorMessage("");
+      const joinedUser = await createUserWithEmailAndPassword(auth, email, pwd);
+      await updateProfile(joinedUser.user, { displayName: nickname });
+      alert("회원가입이 완료되었습니다.");
+      navigate("/login");
+    } catch (error) {
+      console.error(error);
+      // console.log(error);
+      // switch (error.code) {
+      //   case "auth/weak-password":
+      //     setErrorMessage("비밀번호는 6자리 이상이어야 합니다");
+      //     break;
+      //   case "auth/invalid-email":
+      //     setErrorMessage("잘못된 이메일 형식입니다");
+      //     break;
+      //   case "auth/email-already-in-use":
+      //     setErrorMessage("이미 가입되어 있는 계정입니다");
+      //     break;
+      //   default:
+      //     setErrorMessage("회원가입 중 오류가 발생했습니다");
+      //     break;
+      // }
+    }
   };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, pwd)
-      .then(() => {
-        alert("회원가입 성공");
-        navigate("/logIn");
-      })
-      .catch((e) => {
-        alert(e);
-      });
-  };
-
   return (
     <Container>
       <Wrap>
         <FormContainer>
           <Logo />
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleJoin}>
             <NameLabel htmlFor="email">
               이메일
               <Input
                 id="email"
                 type="email"
                 placeholder="이메일을 입력해주세요"
-                onChange={handleEmail}
+                required
+                onChange={(e) => setEmail(e.target.value)}
                 value={email}
               />
             </NameLabel>
@@ -65,21 +98,36 @@ const SignUp = () => {
               <Input
                 type="password"
                 placeholder="비밀번호을 입력해주세요"
-                onChange={handlePwd}
+                required
+                onChange={(e) => setPwd(e.target.value)}
                 value={pwd}
               />
             </NameLabel>
-            {/* <NameLabel>
+            <NameLabel>
               비밀번호 확인
               <Input
                 type="password"
                 placeholder="비밀번호을 다시 입력해주세요"
+                required
+                value={confirmedPwd}
+                onChange={(e) => setConfirmedPwd(e.target.value)}
               />
-            </NameLabel> */}
-            {/* <NameLabel>
-              이름
-              <Input type="text" placeholder="이름을 입력해주세요" />
-            </NameLabel> */}
+              {errorMessage == "비밀번호가 일치하지 않습니다" ||
+                (errorMessage == "이미 가입되어 있는 계정입니다" && (
+                  <p>{errorMessage}</p>
+                ))}
+            </NameLabel>
+            <NameLabel>
+              닉네임
+              <Input
+                type="text"
+                placeholder="닉네임을 입력해주세요"
+                required
+                value={nickname}
+                onChange={(e) => setNickname(e.target.value)}
+              />
+              {errorMessage === "중복된 닉네임입니다." && <p>{errorMessage}</p>}
+            </NameLabel>
             <MiniButton type="submit">회원가입</MiniButton>
           </Form>
         </FormContainer>
