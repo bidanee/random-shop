@@ -5,8 +5,6 @@ import { useRecoilState } from "recoil";
 import { loginState } from "../atoms";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebaseSetup";
-import { useContext } from "react";
-import { AuthContext } from "../firebase/AuthContext";
 const Logo = styled.div`
   display: flex;
   justify-content: center;
@@ -59,7 +57,6 @@ const Input = styled.input`
 
 const Header = () => {
   const [login, setLogin] = useRecoilState(loginState);
-  const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleLogout = () => {
     if (!login) return;
@@ -70,6 +67,7 @@ const Header = () => {
     setLogin(false);
     navigate("/logIn");
   };
+  const getUser = JSON.parse(localStorage.getItem("login"));
 
   return (
     <Nav>
@@ -84,10 +82,10 @@ const Header = () => {
         </label>
         <InfoContainer>
           {login ? (
-            <div>
-              <p>{currentUser}</p>
+            <>
+              <p>{getUser.nickName}님</p>
               <p onClick={handleLogout}>로그아웃</p>
-            </div>
+            </>
           ) : (
             <Link to={"/logIn"}>로그인</Link>
           )}

@@ -19,7 +19,7 @@ const Main = () => {
   }, []);
 
   const NewItem = items.filter((i) => {
-    i.new === true;
+    return i.new === true;
   });
   return (
     <PageContainer>

@@ -58,6 +58,7 @@ const SignUp = () => {
       await updateProfile(joinedUser.user, { displayName: nickname });
       alert("회원가입이 완료되었습니다.");
       navigate("/login");
+      return joinedUser.user;
     } catch (error) {
       console.error(error);
       // console.log(error);

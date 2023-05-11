@@ -1,6 +1,6 @@
 import { User, onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import { auth, db } from "./firebaseSetup";
+import { auth } from "./firebaseSetup";
 import { AuthContext } from "./AuthContext";
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
@@ -8,10 +8,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLogin, setIsLogin] = useState(false);
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
-      console.log(user);
       if (user) {
         setCurrentUser(user);
         setIsLogin(true);
+        // localStorage.setItem(
+        //   "user",
+        //   JSON.stringify({
+        //     uid: user.uid,
+        //     displayName: user.displayName,
+        //     email: user.email,
+        //   })
+        // );
       } else {
         setCurrentUser(null);
         setIsLogin(false);
