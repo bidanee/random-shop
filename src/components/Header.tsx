@@ -1,6 +1,12 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useRecoilState } from "recoil";
+import { loginState } from "../atoms";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/firebaseSetup";
+import { useContext } from "react";
+import { AuthContext } from "../firebase/AuthContext";
 const Logo = styled.div`
   display: flex;
   justify-content: center;
@@ -52,11 +58,19 @@ const Input = styled.input`
 `;
 
 const Header = () => {
-  if (
-    window.location.pathname === "/logIn" ||
-    window.location.pathname === "/signUp"
-  )
-    return null;
+  const [login, setLogin] = useRecoilState(loginState);
+  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    if (!login) return;
+    const logout = () => {
+      signOut(auth);
+    };
+    logout();
+    setLogin(false);
+    navigate("/logIn");
+  };
+
   return (
     <Nav>
       <NavContainer>
@@ -69,8 +83,15 @@ const Header = () => {
           <span></span>
         </label>
         <InfoContainer>
-          <p>000님</p>
-          <Link to={"/logIn"}>로그아웃</Link>
+          {login ? (
+            <div>
+              <p>{currentUser}</p>
+              <p onClick={handleLogout}>로그아웃</p>
+            </div>
+          ) : (
+            <Link to={"/logIn"}>로그인</Link>
+          )}
+
           <Link to={"/cs"}>고객센터</Link>
         </InfoContainer>
         <Link to={"/myPage"}>My Page</Link>

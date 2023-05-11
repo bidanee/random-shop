@@ -17,6 +17,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "../firebase/firebaseSetup";
 import { useNavigate } from "react-router";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import styled from "styled-components";
 
 const SignUp = () => {
   const [nickname, setNickname] = useState("");
@@ -112,11 +113,11 @@ const SignUp = () => {
                 value={confirmedPwd}
                 onChange={(e) => setConfirmedPwd(e.target.value)}
               />
-              {errorMessage == "비밀번호가 일치하지 않습니다" ||
-                (errorMessage == "이미 가입되어 있는 계정입니다" && (
-                  <p>{errorMessage}</p>
-                ))}
             </NameLabel>
+            {errorMessage == "비밀번호가 일치하지 않습니다" ||
+              (errorMessage == "이미 가입되어 있는 계정입니다" && (
+                <Err>{errorMessage}</Err>
+              ))}
             <NameLabel>
               닉네임
               <Input
@@ -126,8 +127,8 @@ const SignUp = () => {
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
               />
-              {errorMessage === "중복된 닉네임입니다." && <p>{errorMessage}</p>}
             </NameLabel>
+            {errorMessage === "중복된 닉네임입니다." && <p>{errorMessage}</p>}
             <MiniButton type="submit">회원가입</MiniButton>
           </Form>
         </FormContainer>
@@ -140,5 +141,9 @@ const SignUp = () => {
     </Container>
   );
 };
+const Err = styled.p`
+  font-size: 12px;
+  color: red;
+`;
 
 export default SignUp;
