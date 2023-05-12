@@ -1,9 +1,11 @@
+import { useState } from "react";
 import {
   PageContainer,
   PageMainContainer,
 } from "../styledComponents/PageStyled";
 
 const Cart = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <PageContainer>
       <PageMainContainer>
@@ -30,21 +32,25 @@ const Cart = () => {
                 </div>
                 <div>
                   <span>총 : 0 원</span>
-                  <button>구매하기</button>
+                  <button type="button" onClick={() => setIsOpen(true)}>
+                    구매하기
+                  </button>
                 </div>
               </div>
             </div>
             <div></div>
           </div>
         </div>
-        {/* 구매모달창 */}
-        <div>
+        {isOpen ? (
           <div>
-            <h3>정말로 구매하시겠습니까?</h3>
-            <button>구매하기</button>
-            <button>취소</button>
+            <div>
+              <h3>정말로 구매하시겠습니까?</h3>
+              {/* localstorage에서 삭제 */}
+              <button onClick={() => setIsOpen(false)}>구매하기</button>
+              <button onClick={() => setIsOpen(false)}>취소</button>
+            </div>
           </div>
-        </div>
+        ) : null}
       </PageMainContainer>
     </PageContainer>
   );
