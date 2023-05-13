@@ -31,7 +31,7 @@ const MyPage = () => {
               <Me>
                 <li>개인정보</li>
                 <li>주문내역</li>
-                <li>찜리스트</li>
+                <li>위시리스트</li>
               </Me>
             </div>
             <DashBoard>

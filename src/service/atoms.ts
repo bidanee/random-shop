@@ -30,7 +30,7 @@ export const itemList = selector<itemProps[]>({
       const res = await fetch("http://localhost:5173/data/itemData.json");
       return await res.json();
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return [];
     }
   },

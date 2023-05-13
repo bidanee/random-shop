@@ -3,43 +3,45 @@ import {
   PageContainer,
   PageMainContainer,
 } from "../styledComponents/PageStyled";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [cartItem, setCartItem] = useState([]);
   return (
     <PageContainer>
       <PageMainContainer>
         <div>
-          {/* 더 담으러가기 */}
-          <div>
-            <h1>장바구니에 물품이 없습니다.</h1>
-            <button>담으러 가기</button>
-          </div>
-          {/* 장바구니에 담긴 상품 */}
-          <div>
-            <div>장바구니에 담긴 상품</div>
+          {cartItem ? (
             <div>
+              <h1>장바구니에 물품이 없습니다.</h1>
+              <Link to={"/choice"}>담으러 가기</Link>
+            </div>
+          ) : (
+            <div>
+              <div>장바구니에 담긴 상품</div>
               <div>
-                <img />
                 <div>
-                  <h2>상품명</h2>
-                  <p>가격</p>
+                  <img />
                   <div>
-                    <button>-</button>
-                    <span>0</span>
-                    <button>+</button>
+                    <h2>상품명</h2>
+                    <p>가격</p>
+                    <div>
+                      <button>-</button>
+                      <span>0</span>
+                      <button>+</button>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <span>총 : 0 원</span>
-                  <button type="button" onClick={() => setIsOpen(true)}>
-                    구매하기
-                  </button>
+                  <div>
+                    <span>총 : 0 원</span>
+                    <button type="button" onClick={() => setIsOpen(true)}>
+                      구매하기
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-            <div></div>
-          </div>
+          )}
         </div>
         {isOpen ? (
           <div>

@@ -8,6 +8,7 @@ import {
   Img,
 } from "../styledComponents/CardStyled";
 import { CategoryCheck } from "../components/CategoryCheck";
+import { Counter } from "../components/DayCount";
 export interface itemProps {
   id: number;
   name: string;
@@ -46,23 +47,12 @@ const ChoiceItem = () => {
           ))}
         </CardContainer>
       </ItemContainer>
+      <div>위시리스트에서 선택하기</div>
       <div>
-        <label>카테고리</label>
-        <CategoryCheck />
         <label>일수</label>
-        <input placeholder="최대5일까지입력가능합니다" />
+        <Counter />
       </div>
-      <ItemContainer>
-        <CardContainer>
-          {items.map((item) => (
-            <ItemCard to={`/fooditem/${item.id}`} key={item.id}>
-              <Img src={item.image} />
-              <p>{item.name}</p>
-              <p>{item.price} 원</p>
-            </ItemCard>
-          ))}
-        </CardContainer>
-      </ItemContainer>
+      <CategoryCheck />
     </List>
   );
 };

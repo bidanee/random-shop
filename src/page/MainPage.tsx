@@ -11,6 +11,7 @@ import {
 } from "../styledComponents/CardStyled";
 import { useEffect, useState } from "react";
 import { itemProps } from "./ChoiceItemPage";
+import { Link } from "react-router-dom";
 
 const Main = () => {
   const [items, setItems] = useState<itemProps[]>([]);
@@ -38,6 +39,9 @@ const Main = () => {
           </CardContainer>
         </ItemContainer>
       </List>
+      <div>
+        <Link to={"/choice"}>랜덤선택하러 가기</Link>
+      </div>
     </PageContainer>
   );
 };
