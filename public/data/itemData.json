@@ -2,7 +2,7 @@
   {
     "new": false,
     "id": 0,
-    "category": "diet",
+    "category": "다이어트",
     "name": "콥 샐러드",
     "image": "https://cdn.pixabay.com/photo/2020/10/03/06/45/cobb-salad-5622724__480.jpg",
     "desc": "섞어서 한입의 쏙 먹을 수 있는 콥 샐러드입니다. 간편하게 먹기 좋아요.",
@@ -11,7 +11,7 @@
   {
     "new": false,
     "id": 1,
-    "category": "diet",
+    "category": "다이어트",
     "name": "두부유부초밥",
     "image": "",
     "desc": "밥 대신 두부가 들어간 유부초밥입니다. 밥 대신 두부가 들어간 유부초밥입니다.",
@@ -20,7 +20,7 @@
   {
     "new": true,
     "id": 2,
-    "category": "diet",
+    "category": "다이어트",
     "name": "곤약국수",
     "image": "https://recipe1.ezmember.co.kr/cache/recipe/2019/06/17/9cdec0ac550bb3cb6e4a3b72e2d04d071.jpg",
     "desc": "새콤달콤 간장베이스 소스를 넣어만든 육수와 닭가슴살 토핑을 얹은 닭가슴살 곤약국수입니다.",
@@ -29,7 +29,7 @@
   {
     "new": false,
     "id": 3,
-    "category": "diet",
+    "category": "다이어트",
     "name": "단호박에그슬럿",
     "image": "https://t1.daumcdn.net/cfile/tistory/99DB15465EE8D22F33",
     "desc": "간단하게 전자렌지에 돌려먹으면 되는 단호박 에그슬럿",
@@ -38,7 +38,7 @@
   {
     "new": false,
     "id": 4,
-    "category": "diet",
+    "category": "다이어트",
     "name": "두부면파스타",
     "image": "https://img.cjthemarket.com/images/file/product/435/20221214113659801.jpg?SF=webp",
     "desc": "두부면으로 칼로리를 낮춘 토마토 파스타입니다. ",
@@ -47,7 +47,7 @@
   {
     "new": false,
     "id": 5,
-    "category": "asian",
+    "category": "아시안푸드",
     "name": "쏨땀",
     "image": "https://cdn.pixabay.com/photo/2015/04/07/07/51/papaya-salad-710613__480.jpg",
     "desc": "약간 매운맛에 아삭거리는 식감의 태국식 그린 파파야 샐러드입니다. ",
@@ -56,7 +56,7 @@
   {
     "new": true,
     "id": 6,
-    "category": "asian",
+    "category": "아시안푸드",
     "name": "뿌팟퐁커리",
     "image": "https://recipe1.ezmember.co.kr/cache/recipe/2017/09/13/4ad0bfe1259e148c2f7e14525dab55e21.jpg",
     "desc": "게맛살로 만들었지만 쫀득쫀득한 식감과 입맛 돋우는 향긋한 꽃게의 향. 매콤짭짤한 커리 소스",
@@ -65,7 +65,7 @@
   {
     "new": false,
     "id": 7,
-    "category": "asian",
+    "category": "아시안푸드",
     "name": "양지쌀국수",
     "image": "https://cdn.pixabay.com/photo/2019/09/26/18/19/vietnam-4506690__480.jpg",
     "desc": "담백한 육수가 일품인 양지 쌀국수입니다.",
@@ -74,7 +74,7 @@
   {
     "new": false,
     "id": 8,
-    "category": "asian",
+    "category": "아시안푸드",
     "name": "나시고렝",
     "image": "https://recipe1.ezmember.co.kr/cache/recipe/2017/07/20/4b61482459720b2f092a9b4709594efc1.jpg",
     "desc": "인도네시아식 볶음밥 숙주와 새우가 한가득 나시고렝입니다.",
@@ -83,7 +83,7 @@
   {
     "new": false,
     "id": 9,
-    "category": "asian",
+    "category": "아시안푸드",
     "name": "똠양꿍",
     "image": "https://i.namu.wiki/i/GpZB54pFFqqagCRK-1PPA1Q2Ci0eXk0A1D6tgUagR3m1MOw7yrw1xrf8mEz3ExCYwn_Hv-wC221fzJV34GgrhtnSQ7wASlgEQd4kIdjkadKKBKjZgSv-lKIBuIEuAhRzv3uQuJAWe0bzIphqnO01VQ.webp",
     "desc": "새우가 들어간 화~악 하고 짧고 강하게 피어오르는 매운맛과 향기가 특징",
@@ -92,7 +92,7 @@
   {
     "new": false,
     "id": 10,
-    "category": "japanese",
+    "category": "일식",
     "name": "새우오꼬노미야끼",
     "image": "https://recipe1.ezmember.co.kr/cache/recipe/2017/02/21/3a20a63e4efacbcfc47571c7a7bac2601.jpg",
     "desc": "밀가루를 가쓰오부시 우린 물에 개어 잘게 썬 양배추를 섞은 후 새우를 넣어서 지져먹는 오꼬노미야끼",
@@ -101,7 +101,7 @@
   {
     "new": true,
     "id": 11,
-    "category": "japanese",
+    "category": "일식",
     "name": "새우튀김소바",
     "image": "https://cdn.pixabay.com/photo/2021/06/29/01/48/food-6372967_1280.jpg",
     "desc": "튀김이 올라간 시원한 냉소바입니다.",
@@ -110,7 +110,7 @@
   {
     "new": false,
     "id": 12,
-    "category": "japanese",
+    "category": "일식",
     "name": "명란오차즈케",
     "image": "https://i.namu.wiki/i/jF24bYIFhyiiVWIKGsti1UnSadnFG9odiZQYVjAXFcCC8kqu7VSXn-c9FJ4q5b98iYbl6BFNZainzhhI1wvDEClFC5JtCINT_D1M0OJZZkKNHIPVvEYAAlSCWKACSyGlBZ1Mu2eANo38VhK2SlPFcw.webp",
     "desc": " 쌀밥에 녹차를 부어서 명란고명을 얹은 오차즈케입니다.",
@@ -119,7 +119,7 @@
   {
     "new": false,
     "id": 13,
-    "category": "japanese",
+    "category": "일식",
     "name": "차슈라멘",
     "image": "https://cdn.pixabay.com/photo/2017/04/04/00/36/ramen-2199962__480.jpg",
     "desc": "된장베이스의 차슈 라멘 입니다. 계란은 반숙입니다.",
@@ -128,7 +128,7 @@
   {
     "new": false,
     "id": 14,
-    "category": "japanese",
+    "category": "일식",
     "name": "소고기스키야끼",
     "image": "https://cdn.pixabay.com/photo/2017/04/04/00/36/ramen-2199962__480.jpg",
     "desc": "단짠단짠의 정석 고기듬뿍 스키야끼입니다. 소스는 없어요.",
@@ -137,7 +137,7 @@
   {
     "new": false,
     "id": 15,
-    "category": "chinese",
+    "category": "중식",
     "name": "마라탕",
     "image": "https://i.namu.wiki/i/qFWfOHBd0mx7NmNquwtaSbUjnPumXpk5oi1jxNKpWUsv_eGJe44xm9AePkbhQ6hIxTjMtroFaOFPbhBy0MSbNQ.webp",
     "desc": "알싸한 맛의 정석 맵기 조절가능한 깊은맛의 마라탕입니다.",
@@ -146,7 +146,7 @@
   {
     "new": false,
     "id": 16,
-    "category": "chinese",
+    "category": "중식",
     "name": "탄탄면",
     "image": "https://www.hmap.co.kr/upload/editor/1576218033_xt5_dandan.jpg",
     "desc": "탄탄면은 원래 중국이 원조! 땅콩 기름에 땅콩, 고춧가루, 마늘 등을 볶고 국수에 얹은 다음 돼지고기와 파 등 고명을 얹어 비벼 먹는 음식입니다.",
@@ -155,7 +155,7 @@
   {
     "new": false,
     "id": 17,
-    "category": "chinese",
+    "category": "중식",
     "name": "고추잡채",
     "image": "https://i.namu.wiki/i/3RovkuE67KUXaxV3147h16c6SgY1l0nVer4qDHqV4YJUAdMrXFmu6CWwpjmY2GPf5-dTNLMwTBYQo9NYkzUKyM1hHRfdogmISznc5VWdLh1PuUbJfRd9xyW56MrVUgZxiIXbga-kTaESVSKqZbWCwg.webp",
     "desc": "고추 혹은 피망과 죽순, 돼지고기/쇠고기를 볶은 중국 요리",
@@ -164,7 +164,7 @@
   {
     "new": false,
     "id": 18,
-    "category": "chinese",
+    "category": "중식",
     "name": "마파두부",
     "image": "https://recipe1.ezmember.co.kr/cache/recipe/2015/07/16/e90d4aa496657c666f2821977e3c721e1.jpg",
     "desc": "두반장 양념에 고추와 산초를 넣어 얼얼한 맛을 살린 두부요리입니다",
@@ -173,7 +173,7 @@
   {
     "new": false,
     "id": 19,
-    "category": "chinese",
+    "category": "중식",
     "name": "훈툰",
     "image": "https://i.ytimg.com/vi/5LdouVm5XMY/hqdefault.jpg",
     "desc": "물만두, 흑은 만둣국과 유사한 얇은 밀가루 피에 여러 가지 소를 넣어 싼 후 육수에 끓여 먹는 음식입니다",
@@ -182,7 +182,7 @@
   {
     "new": false,
     "id": 20,
-    "category": "korean",
+    "category": "한식",
     "name": "콩나물불고기",
     "image": "https://cdn.pixabay.com/photo/2014/10/29/07/54/sprouts-507668__480.jpg",
     "desc": "매콤한맛의 콩나물이 아삭한 콩불입니다.",
@@ -191,7 +191,7 @@
   {
     "new": false,
     "id": 21,
-    "category": "korean",
+    "category": "한식",
     "name": "비빔밥",
     "image": "https://cdn.pixabay.com/photo/2020/02/28/12/43/bibimbap-4887417__480.jpg",
     "desc": "5색나물에 소불고기를 더한 비빔밥입니다.",
@@ -200,7 +200,7 @@
   {
     "new": false,
     "id": 22,
-    "category": "korean",
+    "category": "한식",
     "name": "바지락된장찌개",
     "image": "https://recipe1.ezmember.co.kr/cache/recipe/2016/12/06/2be34da2b0f9d7bbaa3f6207fa7860921.jpg",
     "desc": "시원하고 개운한 바지락된장찌개입니다.",
@@ -209,7 +209,7 @@
   {
     "new": false,
     "id": 23,
-    "category": "korean",
+    "category": "한식",
     "name": "오삼불고기",
     "image": "https://recipe1.ezmember.co.kr/cache/recipe/2017/04/29/fa0eda603973aee61ebcf6f873122e3b1.jpg",
     "desc": "불맛이 살아있는 매운소스의 오삼불고기입니다.",
@@ -218,7 +218,7 @@
   {
     "new": false,
     "id": 24,
-    "category": "korean",
+    "category": "한식",
     "name": "소불고기",
     "image": "https://recipe1.ezmember.co.kr/cache/recipe/2020/07/01/09e9968def78bd18faf5d3cabe57bf671.jpg",
     "desc": "단짠단짠 당면까지 맛있어버리는 소불고기입니다.",
@@ -227,7 +227,7 @@
   {
     "new": false,
     "id": 25,
-    "category": "western",
+    "category": "양식",
     "name": "소안심스테이크",
     "image": "https://cdn.pixabay.com/photo/2017/07/16/12/07/beef-2509104__480.jpg",
     "desc": "구운감자와 같이 있는 호주산 안심스테이크입니다.",
@@ -236,7 +236,7 @@
   {
     "new": true,
     "id": 26,
-    "category": "western",
+    "category": "양식",
     "name": "슈림프아라비아따",
     "image": "https://recipe1.ezmember.co.kr/cache/recipe/2022/09/30/8e7eb8e3019532a8dc6d39a9a325aad41.jpg",
     "desc": "깔끔한 해산물베이스로 느끼하지않고 매콤하게 만든 아라비아따입니다",
@@ -245,7 +245,7 @@
   {
     "new": false,
     "id": 27,
-    "category": "western",
+    "category": "양식",
     "name": "버섯크림리조토",
     "image": "https://recipe1.ezmember.co.kr/cache/recipe/2017/09/10/268c5a4dab5c4bb622a1f280ea8b7e9f1.jpg",
     "desc": "버섯향이 풍부한 크림리조토 입니다.",
@@ -254,7 +254,7 @@
   {
     "new": false,
     "id": 28,
-    "category": "western",
+    "category": "양식",
     "name": "마르게리따피자",
     "image": "https://cdn.pixabay.com/photo/2017/12/05/20/10/pizza-3000285__480.png",
     "desc": " 전형적인 나폴리 피자의 하나로 토마토와 모짜렐라, 바질을 사용한 피자입니다.",
@@ -263,7 +263,7 @@
   {
     "new": false,
     "id": 29,
-    "category": "western",
+    "category": "양식",
     "name": "라자냐",
     "image": "https://cdn.pixabay.com/photo/2021/02/23/10/48/lasagna-6043045__480.jpg",
     "desc": "넓고 납작한 판 형태의 파스타의 라자냐를 층층이 깔고 사이사이에 고기가 가득인 볼로네제 소스의 라자냐 입니다.",

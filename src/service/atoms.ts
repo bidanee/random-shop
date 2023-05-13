@@ -1,5 +1,6 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
+import { itemProps } from "../page/ChoiceItemPage";
 
 export const authState = atom({
   key: "authState",
@@ -20,4 +21,17 @@ export const nickNameState = atom({
   key: "nickName",
   default: "",
   effects_UNSTABLE: [persistAtom],
+});
+
+export const itemList = selector<itemProps[]>({
+  key: "ItemList",
+  get: async () => {
+    try {
+      const res = await fetch("http://localhost:5173/data/itemData.json");
+      return await res.json();
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
+  },
 });

@@ -7,7 +7,6 @@ import {
   ItemCard,
   Img,
 } from "../styledComponents/CardStyled";
-import { Modal } from "../components/DetailItemModal";
 import { CategoryCheck } from "../components/CategoryCheck";
 export interface itemProps {
   id: number;
@@ -15,11 +14,12 @@ export interface itemProps {
   image: string;
   price: number;
   new: boolean;
+  desc: string;
+  category: string;
 }
 [];
 
 const ChoiceItem = () => {
-  const [modal, setModal] = useState(false);
   const [page, setPage] = useState(1);
   const limit = 9;
   const offset = (page - 1) * limit;
@@ -38,21 +38,12 @@ const ChoiceItem = () => {
         <Title>NEW ITEM</Title>
         <CardContainer>
           {FilterItem.map((item) => (
-            <ItemCard key={item.id}>
+            <ItemCard to={`/fooditem/${item.id}`} key={item.id}>
               <Img src={item.image} />
               <p>{item.name}</p>
               <p>{item.price} 원</p>
-              <button
-                onClick={() => {
-                  setModal(true);
-                }}
-              >
-                더 알아보기
-              </button>
             </ItemCard>
           ))}
-
-          {modal === true ? <Modal /> : null}
         </CardContainer>
       </ItemContainer>
       <div>
@@ -64,17 +55,10 @@ const ChoiceItem = () => {
       <ItemContainer>
         <CardContainer>
           {items.map((item) => (
-            <ItemCard key={item.id}>
+            <ItemCard to={`/fooditem/${item.id}`} key={item.id}>
               <Img src={item.image} />
               <p>{item.name}</p>
               <p>{item.price} 원</p>
-              <button
-                onClick={() => {
-                  setModal(true);
-                }}
-              >
-                더 알아보기
-              </button>
             </ItemCard>
           ))}
         </CardContainer>

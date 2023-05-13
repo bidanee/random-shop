@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const List = styled.div`
@@ -23,7 +24,7 @@ export const CardContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 `;
-export const ItemCard = styled.div`
+export const ItemCard = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;

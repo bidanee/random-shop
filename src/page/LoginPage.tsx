@@ -21,7 +21,7 @@ import {
 } from "firebase/auth";
 import { useNavigate } from "react-router";
 import { useRecoilState } from "recoil";
-import { loginState, nickNameState } from "../atoms";
+import { loginState, nickNameState } from "../service/atoms";
 
 const Divider = styled.div`
   display: flex;

@@ -29,7 +29,7 @@ const Main = () => {
           <Title>NEW ITEM</Title>
           <CardContainer>
             {NewItem?.map((item) => (
-              <ItemCard key={item.id}>
+              <ItemCard to={`/fooditem/${item.id}`} key={item.id}>
                 <Img src={item.image} />
                 <p>{item.name}</p>
                 <p>{item.price} 원</p>

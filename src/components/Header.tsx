@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useRecoilState } from "recoil";
-import { loginState } from "../atoms";
+import { loginState } from "../service/atoms";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebaseSetup";
 import Search from "./Search";
