@@ -93,7 +93,7 @@
     "new": false,
     "id": 10,
     "category": "japanese",
-    "name": "오꼬노미야끼",
+    "name": "새우오꼬노미야끼",
     "image": "https://recipe1.ezmember.co.kr/cache/recipe/2017/02/21/3a20a63e4efacbcfc47571c7a7bac2601.jpg",
     "desc": "밀가루를 가쓰오부시 우린 물에 개어 잘게 썬 양배추를 섞은 후 새우를 넣어서 지져먹는 오꼬노미야끼",
     "price": 8300
@@ -102,7 +102,7 @@
     "new": true,
     "id": 11,
     "category": "japanese",
-    "name": "소바",
+    "name": "새우튀김소바",
     "image": "https://cdn.pixabay.com/photo/2021/06/29/01/48/food-6372967_1280.jpg",
     "desc": "튀김이 올라간 시원한 냉소바입니다.",
     "price": 7700
@@ -111,7 +111,7 @@
     "new": false,
     "id": 12,
     "category": "japanese",
-    "name": "명란 오차즈케",
+    "name": "명란오차즈케",
     "image": "https://i.namu.wiki/i/jF24bYIFhyiiVWIKGsti1UnSadnFG9odiZQYVjAXFcCC8kqu7VSXn-c9FJ4q5b98iYbl6BFNZainzhhI1wvDEClFC5JtCINT_D1M0OJZZkKNHIPVvEYAAlSCWKACSyGlBZ1Mu2eANo38VhK2SlPFcw.webp",
     "desc": " 쌀밥에 녹차를 부어서 명란고명을 얹은 오차즈케입니다.",
     "price": 8300
@@ -120,7 +120,7 @@
     "new": false,
     "id": 13,
     "category": "japanese",
-    "name": "라멘",
+    "name": "차슈라멘",
     "image": "https://cdn.pixabay.com/photo/2017/04/04/00/36/ramen-2199962__480.jpg",
     "desc": "된장베이스의 차슈 라멘 입니다. 계란은 반숙입니다.",
     "price": 8400
@@ -129,7 +129,7 @@
     "new": false,
     "id": 14,
     "category": "japanese",
-    "name": "스키야끼",
+    "name": "소고기스키야끼",
     "image": "https://cdn.pixabay.com/photo/2017/04/04/00/36/ramen-2199962__480.jpg",
     "desc": "단짠단짠의 정석 고기듬뿍 스키야끼입니다. 소스는 없어요.",
     "price": 10100
@@ -228,7 +228,7 @@
     "new": false,
     "id": 25,
     "category": "western",
-    "name": "안심스테이크",
+    "name": "소안심스테이크",
     "image": "https://cdn.pixabay.com/photo/2017/07/16/12/07/beef-2509104__480.jpg",
     "desc": "구운감자와 같이 있는 호주산 안심스테이크입니다.",
     "price": 14000

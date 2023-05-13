@@ -5,6 +5,7 @@ import { useRecoilState } from "recoil";
 import { loginState } from "../atoms";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebaseSetup";
+import Search from "./Search";
 const Logo = styled.div`
   display: flex;
   justify-content: center;
@@ -77,8 +78,9 @@ const Header = () => {
           <Title to={"/"}>LandomMeal</Title>
         </Logo>
         <label>
-          <Input placeholder="검색창임" />
-          <span></span>
+          <Search />
+          {/* <Input placeholder="검색창임" />
+          <span></span> */}
         </label>
         <InfoContainer>
           {login ? (

@@ -68,8 +68,8 @@ const Login = () => {
       await signInWithPopup(auth, provider);
       alert("구글 로그인이 성공적으로 되었습니다.");
       setLogIn(true);
-      navigate("/");
       setNickName(auth.currentUser.displayName);
+      navigate("/");
       window.location.reload();
     } catch (error: any) {
       if (error.code === "로그인 실패") {
