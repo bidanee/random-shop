@@ -9,6 +9,8 @@ import {
 import itemData from "../../public/data/itemData.json";
 import { itemProps } from "../page/ChoiceItemPage";
 import styled from "styled-components";
+import Pagination from "./Pagination";
+// import Pagination from "./Pagination";
 const categoryList = [
   { name: "다이어트" },
   { name: "아시안푸드" },
@@ -28,18 +30,18 @@ const OpenTag = styled.div`
   }
 `;
 export const CategoryCheck = () => {
+  const [limit, setLimit] = useState(3);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
   const [items, setItems] = useState<itemProps[]>([]);
   useEffect(() => {
     setItems(itemData);
   }, []);
-
   const [checkedList, setCheckedList] = useState<Array<string>>([]);
   const handleSingleCheck = (checked: boolean, item: string) => {
     if (checked) {
-      // 단일 선택 시 체크된 아이템을 배열에 추가
       setCheckedList((prev) => [...prev, item]);
     } else {
-      // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
       setCheckedList(checkedList.filter((el) => el !== item));
     }
   };
@@ -52,6 +54,10 @@ export const CategoryCheck = () => {
       setCheckedList([]);
     }
   };
+  const filterItem = items.filter(
+    (item) => checkedList.includes(item.category) === true
+  );
+  const total = filterItem.length;
   return (
     <div>
       <p>카테고리 :</p>
@@ -90,7 +96,7 @@ export const CategoryCheck = () => {
           <ItemContainer>
             <Title>카테고리별 상품</Title>
             <CardContainer>
-              {items.map(
+              {/* {items.map(
                 (item) =>
                   checkedList.includes(item.category) && (
                     <ItemCard to={`/fooditem/${item.id}`} key={item.id}>
@@ -99,7 +105,29 @@ export const CategoryCheck = () => {
                       <p>{item.price} 원</p>
                     </ItemCard>
                   )
-              )}
+              )} */}
+              <div>
+                <main>
+                  {filterItem.slice(offset, offset + limit).map(
+                    (item) =>
+                      checkedList.includes(item.category) && (
+                        <ItemCard to={`/fooditem/${item.id}`} key={item.id}>
+                          <Img src={item.image} />
+                          <p>{item.name}</p>
+                          <p>{item.price} 원</p>
+                        </ItemCard>
+                      )
+                  )}
+                </main>
+                <div>
+                  <Pagination
+                    total={total}
+                    limit={limit}
+                    page={page}
+                    setPage={setPage}
+                  />
+                </div>
+              </div>
             </CardContainer>
           </ItemContainer>
         </div>
