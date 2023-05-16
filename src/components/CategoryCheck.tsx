@@ -30,7 +30,7 @@ const OpenTag = styled.div`
   }
 `;
 export const CategoryCheck = () => {
-  const [limit, setLimit] = useState(3);
+  const limit = 3;
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
   const [items, setItems] = useState<itemProps[]>([]);
@@ -58,6 +58,7 @@ export const CategoryCheck = () => {
     (item) => checkedList.includes(item.category) === true
   );
   const total = filterItem.length;
+
   return (
     <div>
       <p>카테고리 :</p>
@@ -96,16 +97,6 @@ export const CategoryCheck = () => {
           <ItemContainer>
             <Title>카테고리별 상품</Title>
             <CardContainer>
-              {/* {items.map(
-                (item) =>
-                  checkedList.includes(item.category) && (
-                    <ItemCard to={`/fooditem/${item.id}`} key={item.id}>
-                      <Img src={item.image} />
-                      <p>{item.name}</p>
-                      <p>{item.price} 원</p>
-                    </ItemCard>
-                  )
-              )} */}
               <div>
                 <main>
                   {filterItem.slice(offset, offset + limit).map(

@@ -23,6 +23,13 @@ export const nickNameState = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
+//wish
+export const Wishstate = atom({
+  key: "Wish",
+  default: false,
+});
+//wish
+
 export const itemList = selector<itemProps[]>({
   key: "ItemList",
   get: async () => {

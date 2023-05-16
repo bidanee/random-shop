@@ -10,15 +10,28 @@ import Cart from "./page/CartPage";
 import MyPage from "./page/MyPage";
 import ChoiceItem from "./page/ChoiceItemPage";
 import DetailItem from "./page/DetailPage";
+import { useEffect, useState } from "react";
+import { User, onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase/firebaseSetup";
 
 function App() {
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        setCurrentUser(user);
+      } else {
+        setCurrentUser(null);
+      }
+    });
+  }, []);
   return (
     <RecoilRoot>
       <BrowserRouter>
         <Header />
         <section>
           <Routes>
-            <Route path="/" element={<Main />} />
+            <Route path="/" element={currentUser ? <Main /> : <Login />} />
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/logIn" element={<Login />} />
             <Route path="/cart" element={<Cart />} />

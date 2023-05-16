@@ -11,17 +11,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       if (user) {
         setCurrentUser(user);
         setIsLogin(true);
-        // localStorage.setItem(
-        //   "user",
-        //   JSON.stringify({
-        //     uid: user.uid,
-        //     displayName: user.displayName,
-        //     email: user.email,
-        //   })
-        // );
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            uid: user.uid,
+            displayName: user.displayName,
+            email: user.email,
+            wish: [],
+          })
+        );
       } else {
         setCurrentUser(null);
         setIsLogin(false);
+        localStorage.removeItem("login");
+        localStorage.removeItem("user");
       }
     });
   }, []);

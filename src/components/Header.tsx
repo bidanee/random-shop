@@ -57,10 +57,11 @@ const Input = styled.input`
 `;
 
 const Header = () => {
+  const isLogin = JSON.parse(localStorage.getItem("user"));
   const [login, setLogin] = useRecoilState(loginState);
   const navigate = useNavigate();
   const handleLogout = () => {
-    if (!login) return;
+    if (!isLogin) return;
     const logout = () => {
       signOut(auth);
     };
@@ -68,8 +69,7 @@ const Header = () => {
     setLogin(false);
     navigate("/logIn");
   };
-  const getUser = JSON.parse(localStorage.getItem("login"));
-
+  const getPerson = JSON.parse(localStorage.getItem("user"));
   return (
     <Nav>
       <NavContainer>
@@ -83,9 +83,9 @@ const Header = () => {
           <span></span> */}
         </label>
         <InfoContainer>
-          {login ? (
+          {JSON.parse(localStorage.getItem("user")) ? (
             <>
-              <p>{getUser.nickName}님</p>
+              <p>{getPerson.displayName}님</p>
               <p onClick={handleLogout}>로그아웃</p>
             </>
           ) : (
