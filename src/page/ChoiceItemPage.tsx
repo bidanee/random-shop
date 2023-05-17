@@ -17,6 +17,7 @@ export interface itemProps {
   new: boolean;
   desc: string;
   category: string;
+  like: boolean;
 }
 [];
 

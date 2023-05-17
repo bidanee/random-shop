@@ -1,6 +1,7 @@
 [
   {
     "new": false,
+    "like": false,
     "id": 0,
     "category": "다이어트",
     "name": "콥 샐러드",
@@ -10,6 +11,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 1,
     "category": "다이어트",
     "name": "두부유부초밥",
@@ -19,6 +21,7 @@
   },
   {
     "new": true,
+    "like": false,
     "id": 2,
     "category": "다이어트",
     "name": "곤약국수",
@@ -28,6 +31,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 3,
     "category": "다이어트",
     "name": "단호박에그슬럿",
@@ -37,6 +41,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 4,
     "category": "다이어트",
     "name": "두부면파스타",
@@ -46,6 +51,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 5,
     "category": "아시안푸드",
     "name": "쏨땀",
@@ -55,6 +61,7 @@
   },
   {
     "new": true,
+    "like": false,
     "id": 6,
     "category": "아시안푸드",
     "name": "뿌팟퐁커리",
@@ -64,6 +71,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 7,
     "category": "아시안푸드",
     "name": "양지쌀국수",
@@ -73,6 +81,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 8,
     "category": "아시안푸드",
     "name": "나시고렝",
@@ -82,6 +91,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 9,
     "category": "아시안푸드",
     "name": "똠양꿍",
@@ -91,6 +101,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 10,
     "category": "일식",
     "name": "새우오꼬노미야끼",
@@ -100,6 +111,7 @@
   },
   {
     "new": true,
+    "like": false,
     "id": 11,
     "category": "일식",
     "name": "새우튀김소바",
@@ -109,6 +121,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 12,
     "category": "일식",
     "name": "명란오차즈케",
@@ -118,6 +131,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 13,
     "category": "일식",
     "name": "차슈라멘",
@@ -127,6 +141,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 14,
     "category": "일식",
     "name": "소고기스키야끼",
@@ -136,6 +151,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 15,
     "category": "중식",
     "name": "마라탕",
@@ -145,6 +161,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 16,
     "category": "중식",
     "name": "탄탄면",
@@ -154,6 +171,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 17,
     "category": "중식",
     "name": "고추잡채",
@@ -163,6 +181,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 18,
     "category": "중식",
     "name": "마파두부",
@@ -172,6 +191,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 19,
     "category": "중식",
     "name": "훈툰",
@@ -181,6 +201,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 20,
     "category": "한식",
     "name": "콩나물불고기",
@@ -190,6 +211,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 21,
     "category": "한식",
     "name": "비빔밥",
@@ -199,6 +221,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 22,
     "category": "한식",
     "name": "바지락된장찌개",
@@ -208,6 +231,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 23,
     "category": "한식",
     "name": "오삼불고기",
@@ -217,6 +241,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 24,
     "category": "한식",
     "name": "소불고기",
@@ -226,6 +251,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 25,
     "category": "양식",
     "name": "소안심스테이크",
@@ -235,6 +261,7 @@
   },
   {
     "new": true,
+    "like": false,
     "id": 26,
     "category": "양식",
     "name": "슈림프아라비아따",
@@ -244,6 +271,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 27,
     "category": "양식",
     "name": "버섯크림리조토",
@@ -253,6 +281,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 28,
     "category": "양식",
     "name": "마르게리따피자",
@@ -262,6 +291,7 @@
   },
   {
     "new": false,
+    "like": false,
     "id": 29,
     "category": "양식",
     "name": "라자냐",

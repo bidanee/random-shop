@@ -18,9 +18,6 @@ import { Wishstate } from "../service/atoms";
 
 const Main = () => {
   const [items, setItems] = useState<itemProps[]>([]);
-  useEffect(() => {
-    setItems(itemData);
-  }, []);
 
   const NewItem = items.filter((i) => {
     return i.new === true;
@@ -29,19 +26,22 @@ const Main = () => {
   const UserId = JSON.parse(localStorage.getItem("user")).email;
   const baskets = JSON.parse(localStorage.getItem(`${UserId}.baskets`)) || [];
   const [wish, setWish] = useRecoilState(Wishstate);
-  const onClickWish = (boardEl: string, wish: boolean) => {
+  useEffect(() => {
+    setItems(itemData);
+  }, [wish]);
+  const onClickWish = (boardEl: string) => {
     if (!baskets.includes(boardEl)) {
       baskets.push(boardEl);
-      if (baskets.includes(boardEl)) {
-        setWish(true);
-      }
+      setWish(true);
     } else {
       baskets.splice(baskets.indexOf(boardEl));
       setWish(false);
     }
     localStorage.setItem(`${UserId}.baskets`, JSON.stringify(baskets));
   };
-  console.log(wish);
+
+  console.log(...items, "");
+
   return (
     <PageContainer>
       <Slider />
@@ -56,15 +56,15 @@ const Main = () => {
                   <p>{item.name}</p>
                   <p>{item.price} 원</p>
                 </ItemCard>
-                {baskets.includes(item.name) === true ? (
+                {baskets.includes(item.name) ? (
                   <AiFillHeart
                     size={24}
-                    onClick={() => onClickWish(item.name, true)}
+                    onClick={() => onClickWish(item.name)}
                   />
                 ) : (
                   <AiOutlineHeart
                     size={24}
-                    onClick={() => onClickWish(item.name, wish)}
+                    onClick={() => onClickWish(item.name)}
                   />
                 )}
               </div>
