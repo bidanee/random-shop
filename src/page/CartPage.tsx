@@ -30,6 +30,25 @@ const Cart = () => {
   };
   //count
 
+  const total = () => {
+    const arr: Array<any> = [];
+    newCart.map((id) =>
+      items.map((item) => {
+        if (item.id === id) {
+          return arr.push(item);
+        }
+      })
+    );
+    const totalPrice: Array<any> = [];
+    arr.map((item) =>
+      totalPrice.push(
+        getCartList.filter((i: number) => i === item.id).length * item.price
+      )
+    );
+    return totalPrice;
+  };
+  total();
+
   return (
     <PageContainer>
       <PageMainContainer>
@@ -76,7 +95,7 @@ const Cart = () => {
           )}
           {newCart.length > 0 ? (
             <div>
-              <span>총 : 0 원</span>
+              <span>총 {total().reduce((a, b) => a + b)}원</span>
               <button>구매하기</button>
             </div>
           ) : null}
