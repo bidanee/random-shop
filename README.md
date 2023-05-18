@@ -19,11 +19,14 @@
 - 카트 담기
 - 위시리스트
 
-## Project 시연 영상 ('식단어때'를 영상으로 확인해 보세요!)
+## Project 시연 영상 (랜더밀)
 
 - YouTube :
 
 ## Project 화면 구현 예시
+
+- 검색 기능 과 장바구니 기능
+  ![search](https://github.com/bidanee/random-shop/assets/110444526/cf59af6b-04d8-4c5a-9c03-284059e2d9fc)
 
 ## Project 회고
 
