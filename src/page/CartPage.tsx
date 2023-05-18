@@ -47,8 +47,7 @@ const Cart = () => {
     );
     return totalPrice;
   };
-  total();
-
+  const TotalPrice = total()?.reduce((a, b) => a + b, 0);
   return (
     <PageContainer>
       <PageMainContainer>
@@ -95,7 +94,7 @@ const Cart = () => {
           )}
           {newCart.length > 0 ? (
             <div>
-              <span>총 {total().reduce((a, b) => a + b)}원</span>
+              <span>총 {TotalPrice}원</span>
               <button>구매하기</button>
             </div>
           ) : null}
