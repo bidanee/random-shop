@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { itemProps } from "./ChoiceItemPage";
 import itemData from "../../public/data/itemData.json";
 import { useLocation } from "react-router-dom";
+import CartBtn from "../components/Cart";
 
 const DetailItem = () => {
   const [items, setItems] = useState<itemProps[]>([]);
@@ -28,6 +29,7 @@ const DetailItem = () => {
   useEffect(() => {
     setItems(itemData);
   }, []);
+
   return (
     <Wrapper>
       <Container>
@@ -39,7 +41,10 @@ const DetailItem = () => {
               <DetailP>카테고리 : {detail.category}</DetailP>
               <DetailP>가격 : {detail.price}</DetailP>
               <DetailP>{detail.desc}</DetailP>
-              <button onClick={() => onClickWish(detail.name)}>찜하기</button>
+              <BtnDiv>
+                <button onClick={() => onClickWish(detail.name)}>찜하기</button>
+                <CartBtn />
+              </BtnDiv>
             </Detail>
           </DetailContainer>
         )}
@@ -48,6 +53,9 @@ const DetailItem = () => {
   );
 };
 
+const BtnDiv = styled.div`
+  display: flex;
+`;
 const Detail = styled.div``;
 const DetailP = styled.p`
   margin: 1rem 0;

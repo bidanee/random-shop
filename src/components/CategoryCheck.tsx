@@ -126,7 +126,7 @@ export const CategoryCheck = () => {
                   {filterItem.slice(offset, offset + limit).map(
                     (item) =>
                       checkedList.includes(item.category) && (
-                        <ItemCard>
+                        <ItemCard key={item.id}>
                           <Link to={`/fooditem/${item.id}`}>
                             <Img src={item.image} />
                           </Link>

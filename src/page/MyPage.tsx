@@ -115,15 +115,6 @@ const MyPage = () => {
   const UserId = JSON.parse(localStorage.getItem("user")).email;
   const baskets = JSON.parse(localStorage.getItem(`${UserId}.baskets`)) || [];
 
-  for (let i = 0; i < getWishList.length; i++) {
-    items
-      .map((item) => {
-        if (item.name === getWishList[1]) {
-          return [item.name, item.image];
-        }
-      })
-      .filter((item) => item);
-  }
   const onDelBtnClick = (boardEl: string) => {
     if (confirm("삭제 하시겠습니까?") === true) {
       baskets.splice(baskets.indexOf(boardEl), 1);

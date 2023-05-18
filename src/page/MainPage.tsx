@@ -39,7 +39,7 @@ const Main = () => {
       baskets.push(boardEl);
       setWish(true);
     } else {
-      baskets.splice(baskets.indexOf(boardEl), 1);
+      baskets.splice(baskets.indexOf(boardEl));
       setWish(false);
     }
     localStorage.setItem(`${UserId}.baskets`, JSON.stringify(baskets));
