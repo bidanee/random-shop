@@ -1,23 +1,11 @@
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { useRecoilState } from "recoil";
 import { loginState } from "../service/atoms";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebaseSetup";
 import Search from "./Search";
-const Logo = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const InfoContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem;
-  font-size: 15px;
-`;
+
 const Nav = styled.nav`
   display: flex;
   position: fixed;
@@ -30,8 +18,32 @@ const Nav = styled.nav`
   background-color: white;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 /0.1);
 `;
+const Logo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const MypageContainer = styled.div`
+  display: flex;
+`;
+const InfoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  font-size: 15px;
+`;
+const Info = styled.p`
+  margin: 0 1.2rem 0 0.5rem;
+  cursor: pointer;
+  :hover {
+    color:#3ded97
+  }
+`;
+
 const NavContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   width: 100%;
   align-items: center;
   padding: 0 3rem;
@@ -45,20 +57,23 @@ const Title = styled(Link)`
   flex-shrink: 0;
   margin-left: 3rem;
   margin-right: 1rem;
-  font-size: 1.125rem;
+  font-size: 2rem;
   line-height: 1.75rem;
   font-weight: 700;
   white-space: nowrap;
   color: #3ded97;
 `;
-const Input = styled.input`
-  width: 10rem;
-  font-size: 15px;
+
+const InfoLink = styled(Link)`
+  margin: 0 5px;
+  :hover{
+    color:#3ded97;
+  }
 `;
 
 const Header = () => {
   const isLogin = JSON.parse(localStorage.getItem("user"));
-  const [login, setLogin] = useRecoilState(loginState);
+  const [, setLogin] = useRecoilState(loginState);
   const navigate = useNavigate();
   const handleLogout = () => {
     if (!isLogin) return;
@@ -74,28 +89,26 @@ const Header = () => {
     <Nav>
       <NavContainer>
         <Logo>
-          <GiHamburgerMenu size={24} />
           <Title to={"/"}>LandomMeal</Title>
         </Logo>
-        <label>
-          <Search />
-          {/* <Input placeholder="검색창임" />
-          <span></span> */}
-        </label>
+
+        <Search />
+
         <InfoContainer>
           {JSON.parse(localStorage.getItem("user")) ? (
             <>
               <p>{getPerson.displayName}님</p>
-              <p onClick={handleLogout}>로그아웃</p>
+              <Info onClick={handleLogout}>로그아웃</Info>
             </>
           ) : (
             <Link to={"/logIn"}>로그인</Link>
           )}
-
-          <Link to={"/cs"}>고객센터</Link>
+          <MypageContainer>
+            <InfoLink to={"/myPage"}>MyPage</InfoLink>
+            <InfoLink to={"/cart"}>Cart</InfoLink>
+            <InfoLink to={"/cs"}>고객센터</InfoLink>
+          </MypageContainer>
         </InfoContainer>
-        <Link to={"/myPage"}>My Page</Link>
-        <Link to={"/cart"}>Cart</Link>
       </NavContainer>
     </Nav>
   );

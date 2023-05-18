@@ -11,7 +11,7 @@
   },
   {
     "new": false,
-    "like": false,
+    "like": true,
     "id": 1,
     "category": "다이어트",
     "name": "두부유부초밥",
@@ -31,7 +31,7 @@
   },
   {
     "new": false,
-    "like": false,
+    "like": true,
     "id": 3,
     "category": "다이어트",
     "name": "단호박에그슬럿",
@@ -251,7 +251,7 @@
   },
   {
     "new": false,
-    "like": false,
+    "like": true,
     "id": 25,
     "category": "양식",
     "name": "소안심스테이크",
@@ -281,7 +281,7 @@
   },
   {
     "new": false,
-    "like": false,
+    "like": true,
     "id": 28,
     "category": "양식",
     "name": "마르게리따피자",
