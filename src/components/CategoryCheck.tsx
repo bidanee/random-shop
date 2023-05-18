@@ -17,7 +17,7 @@ import { itemProps } from "../page/ChoiceItemPage";
 import Pagination from "./Pagination";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { Wishstate } from "../service/atoms";
+import { DayCountState, Wishstate } from "../service/atoms";
 import { Counter } from "../components/DayCount";
 import styled from "styled-components";
 // import Pagination from "./Pagination";
@@ -70,10 +70,25 @@ export const CategoryCheck = () => {
       baskets.push(boardEl);
       setWish(true);
     } else {
-      baskets.splice(baskets.indexOf(boardEl));
+      baskets.splice(baskets.indexOf(boardEl), 1);
       setWish(false);
     }
     localStorage.setItem(`${UserId}.baskets`, JSON.stringify(baskets));
+  };
+  const [count, setCount] = useRecoilState(DayCountState);
+  const selectIndex = (totalIndex: number, selectingNumber: number) => {
+    const randomIndexArray = [];
+    for (let i = 0; i < selectingNumber; i++) {
+      //check if there is any duplicate index
+      const randomNum = Math.floor(Math.random() * totalIndex);
+      if (randomIndexArray.indexOf(randomNum) === -1) {
+        randomIndexArray.push(randomNum);
+      } else {
+        //if the randomNum is already in the array retry
+        i--;
+      }
+    }
+    return randomIndexArray;
   };
 
   return (
@@ -123,38 +138,42 @@ export const CategoryCheck = () => {
             <CardContainer>
               <div>
                 <MainContainer>
-                  {filterItem.slice(offset, offset + limit).map(
-                    (item) =>
-                      checkedList.includes(item.category) && (
-                        <ItemCard key={item.id}>
-                          <Link to={`/fooditem/${item.id}`}>
-                            <Img src={item.image} />
-                          </Link>
-                          <DescDiv>
-                            <div>
-                              <ItemP>{item.name}</ItemP>
-                              <ItemP>{item.price} 원</ItemP>
-                            </div>
-                            <div>
-                              {baskets.includes(item.name) ? (
-                                <ItemP onClick={() => onClickWish(item.name)}>
-                                  <FillHeartICon
-                                    size={24}
-                                    onClick={() => setWish(!wish)}
-                                  />
-                                </ItemP>
-                              ) : (
-                                <ItemP onClick={() => onClickWish(item.name)}>
-                                  <HeartICon
-                                    size={24}
-                                    onClick={() => setWish(!wish)}
-                                  />
-                                </ItemP>
-                              )}
-                            </div>
-                          </DescDiv>
-                        </ItemCard>
-                      )
+                  {filterItem.length > 0 ? (
+                    filterItem.slice(offset, offset + limit).map(
+                      (item) =>
+                        checkedList.includes(item.category) && (
+                          <ItemCard key={item.id}>
+                            <Link to={`/fooditem/${item.id}`}>
+                              <Img src={item.image} />
+                            </Link>
+                            <DescDiv>
+                              <div>
+                                <ItemP>{item.name}</ItemP>
+                                <ItemP>{item.price} 원</ItemP>
+                              </div>
+                              <div>
+                                {baskets.includes(item.name) ? (
+                                  <ItemP onClick={() => onClickWish(item.name)}>
+                                    <FillHeartICon
+                                      size={24}
+                                      onClick={() => setWish(!wish)}
+                                    />
+                                  </ItemP>
+                                ) : (
+                                  <ItemP onClick={() => onClickWish(item.name)}>
+                                    <HeartICon
+                                      size={24}
+                                      onClick={() => setWish(!wish)}
+                                    />
+                                  </ItemP>
+                                )}
+                              </div>
+                            </DescDiv>
+                          </ItemCard>
+                        )
+                    )
+                  ) : (
+                    <Select>카테고리를 골라 주세요</Select>
                   )}
                 </MainContainer>
                 <div>
@@ -173,6 +192,15 @@ export const CategoryCheck = () => {
     </div>
   );
 };
+const Select = styled.p`
+  padding-left: 13rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #025464;
+`;
 
 const DivTag = styled.div`
   display: flex;

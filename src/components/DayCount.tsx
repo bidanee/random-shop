@@ -1,9 +1,10 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { useRecoilState } from "recoil";
+import { DayCountState } from "../service/atoms";
 
 export const Counter = () => {
-  const [count, setCount] = useState<number>(0);
+  const [count, setCount] = useRecoilState(DayCountState);
   const onInc = () => {
     if (count < 5) {
       setCount(count + 1);
@@ -16,7 +17,7 @@ export const Counter = () => {
   };
   return (
     <Container>
-      <Ptag>일수 선택 </Ptag>
+      <Ptag>랜덤 선택 </Ptag>
       <BtnContainer>
         <Button onClick={onInc}>
           <AiOutlinePlus size={15} />

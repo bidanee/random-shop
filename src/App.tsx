@@ -13,6 +13,7 @@ import DetailItem from "./page/DetailPage";
 import { useEffect, useState } from "react";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebaseSetup";
+import Footer from "./components/Footer";
 
 function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -40,6 +41,7 @@ function App() {
             <Route path="/fooditem/:id" element={<DetailItem />} />
           </Routes>
         </section>
+        <Footer />
       </BrowserRouter>
     </RecoilRoot>
   );

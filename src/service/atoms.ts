@@ -32,6 +32,10 @@ export const CartState = atom({
   key: "cart",
   default: false,
 });
+export const DayCountState = atom({
+  key: "count",
+  default: 0,
+});
 
 export const itemList = selector<itemProps[]>({
   key: "ItemList",

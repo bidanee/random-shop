@@ -45,11 +45,13 @@ const SignUp = () => {
     e.preventDefault();
     if (pwd !== confirmedPwd) {
       setErrorMessage("비밀번호가 일치하지 않습니다");
+      alert("비밀번호가 일치하지 않습니다");
       return;
     }
     const isNicknameDuplicated = await checkNickName(nickname);
     if (isNicknameDuplicated) {
       setErrorMessage("중복된 닉네임입니다.");
+      alert("중복된 닉네임입니다.");
       return;
     }
     try {
@@ -57,25 +59,10 @@ const SignUp = () => {
       const joinedUser = await createUserWithEmailAndPassword(auth, email, pwd);
       await updateProfile(joinedUser.user, { displayName: nickname });
       alert("회원가입이 완료되었습니다.");
-      navigate("/login");
+      navigate("/");
       return joinedUser.user;
     } catch (error) {
       console.error(error);
-      // console.log(error);
-      // switch (error.code) {
-      //   case "auth/weak-password":
-      //     setErrorMessage("비밀번호는 6자리 이상이어야 합니다");
-      //     break;
-      //   case "auth/invalid-email":
-      //     setErrorMessage("잘못된 이메일 형식입니다");
-      //     break;
-      //   case "auth/email-already-in-use":
-      //     setErrorMessage("이미 가입되어 있는 계정입니다");
-      //     break;
-      //   default:
-      //     setErrorMessage("회원가입 중 오류가 발생했습니다");
-      //     break;
-      // }
     }
   };
   return (

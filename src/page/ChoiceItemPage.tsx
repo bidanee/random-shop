@@ -46,7 +46,7 @@ const ChoiceItem = () => {
       baskets.push(boardEl);
       setWish(true);
     } else {
-      baskets.splice(baskets.indexOf(boardEl));
+      baskets.splice(baskets.indexOf(boardEl), 1);
       setWish(false);
     }
     localStorage.setItem(`${UserId}.baskets`, JSON.stringify(baskets));
