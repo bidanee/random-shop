@@ -1,12 +1,27 @@
 import { useEffect, useState } from "react";
 import {
+  BtnContainer,
+  Button,
+  CartImg,
+  CartItemContainer,
+  CartList,
+  CartPageContainer,
+  CartTitle,
+  DetailBox,
+  GoBtn,
+  ItemBox,
+  ItemInfoP,
+  NoCart,
+  NotIn,
   PageContainer,
   PageMainContainer,
+  PriceContainer,
+  Total,
+  TotalContainer,
 } from "../styledComponents/PageStyled";
 import { Link } from "react-router-dom";
 import { itemProps } from "./ChoiceItemPage";
 import itemData from "../../public/data/itemData.json";
-import { Img } from "../styledComponents/CardStyled";
 
 const Cart = () => {
   const [items, setItems] = useState<itemProps[]>([]);
@@ -51,54 +66,66 @@ const Cart = () => {
   return (
     <PageContainer>
       <PageMainContainer>
-        <div>
-          {newCart.length > 0 ? <div>장바구니에 담긴 상품</div> : null}
+        <CartPageContainer>
           {newCart.length > 0 ? (
-            newCart.map((id) =>
-              items.map((item) => {
-                if (item.id === id) {
-                  return (
-                    <div key={item.id}>
-                      <div>
-                        <Img src={item.image} />
-                        <div>
-                          <h2>{item.name}</h2>
-                          <p>
-                            {item.price *
-                              getCartList.filter((i: number) => i === item.id)
-                                .length}
-                            원
-                          </p>
-                          <div>
-                            <button onClick={() => MinusBtn(item.id)}>-</button>
-                            <p>
-                              {
-                                getCartList.filter((i: number) => i === item.id)
-                                  .length
-                              }
-                            </p>
-                            <button onClick={() => PlusBtn(item.id)}>+</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                }
-              })
-            )
-          ) : (
-            <div>
-              <h1>장바구니에 물품이 없습니다.</h1>
-              <Link to={"/choice"}>담으러 가기</Link>
-            </div>
-          )}
-          {newCart.length > 0 ? (
-            <div>
-              <span>총 {TotalPrice}원</span>
-              <button>구매하기</button>
-            </div>
+            <CartTitle>장바구니에 담긴 상품</CartTitle>
           ) : null}
-        </div>
+          <CartItemContainer>
+            <CartList>
+              {newCart.length > 0 ? (
+                newCart.map((id) =>
+                  items.map((item) => {
+                    if (item.id === id) {
+                      return (
+                        <ItemBox key={item.id}>
+                          <CartImg src={item.image} />
+                          <DetailBox>
+                            <ItemInfoP>{item.name}</ItemInfoP>
+                            <ItemInfoP>
+                              {item.price *
+                                getCartList.filter((i: number) => i === item.id)
+                                  .length}
+                              원
+                            </ItemInfoP>
+                            <BtnContainer>
+                              <Button onClick={() => MinusBtn(item.id)}>
+                                -
+                              </Button>
+                              <p>
+                                {
+                                  getCartList.filter(
+                                    (i: number) => i === item.id
+                                  ).length
+                                }
+                              </p>
+                              <Button onClick={() => PlusBtn(item.id)}>
+                                +
+                              </Button>
+                            </BtnContainer>
+                          </DetailBox>
+                        </ItemBox>
+                      );
+                    }
+                  })
+                )
+              ) : (
+                <NoCart>
+                  <NotIn>장바구니에 물품이 없습니다.</NotIn>
+                  <GoBtn to={"/choice"}>담으러 가기</GoBtn>
+                </NoCart>
+              )}
+            </CartList>
+            {newCart.length > 0 ? (
+              <TotalContainer>
+                <PriceContainer>
+                  <Total>총</Total>
+                  <span>{TotalPrice}원</span>
+                </PriceContainer>
+                <button>구매하기</button>
+              </TotalContainer>
+            ) : null}
+          </CartItemContainer>
+        </CartPageContainer>
         {isOpen ? (
           <div>
             <div>
