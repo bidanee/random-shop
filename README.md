@@ -1,16 +1,17 @@
-# Project 'RandomMeal'
+# 🙋‍♀️  Project 'RandomMeal' 
+요즘 먹는 게 다 비슷비슷하다 보니 오늘 점심 뭐 먹지? 저녁 뭐 먹지? 라는 생각을 많이 하게 되었습니다. 
+그래서 그냥 추천해주는대로 간단하게 만들어먹고싶다는 생각과 동시에 장 보러 갈 시간이 없거나 먹는걸 고민하는게 귀찮은 사람들에게 식단을 랜덤하게 추천해줘서 판매하는 그런 웹 페이지를 만들어 보고 싶다는 생각이 들어 만들어 보았습니다.
+ 
 
-요즘 먹는 게 다 비슷비슷하다 보니 오늘 점심 뭐 먹지? 저녁 뭐 먹지? 라는 생각을 많이 하게 되었습니다. 장 보러 갈 시간이 없을 수도 있고 먹는걸 고민해야 하는 약간의 스트레스가 싫어서 식단을 랜덤하게 추천해줘서 판매하는 그런 웹 페이지를 만들어 보고 싶다는 생각이 들어 만들어 보았습니다.
-
-## Project 기술 스택
-
+## ⚙️  Project 기술 스택
 - TypeScript
 - React
 - Vite
 - Firebase
 - tailwind/daisyui
+![Static Badge](https://img.shields.io/badge/:badgeContent)
 
-## Project 기능
+## 💨  Project 기능
 
 - firebase 백엔드 서비스 연동
 - 회원가입 및 로그인
@@ -21,16 +22,16 @@
 - 위시리스트
 - 랜덤상품 설정
 
-## Project 시연 영상 (랜더밀)
+## 🎬  Project 시연 영상 (랜더밀)
 
 - YouTube :https://youtu.be/q7EOialZXgs
 
-## Project 화면 구현 예시
+## 🎮  Project 화면 구현
 
 - 검색 기능 과 장바구니 기능
   ![search](https://github.com/bidanee/random-shop/assets/110444526/cf59af6b-04d8-4c5a-9c03-284059e2d9fc)
 
-## Project 회고
+## 🚀  Project 회고
 
 프로젝트 초반에 firebase를 처음 접해봐서 시간읆 많이 잡아먹었다.
 typescript로 작성하면서 Type에러도 많이 겪었다.
