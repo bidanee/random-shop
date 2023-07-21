@@ -8,6 +8,7 @@
 - React
 - Vite
 - Firebase
+- tailwind/daisyui
 
 ## Project 기능
 
@@ -18,10 +19,11 @@
 - 음식 필터링(카테고리 분류) + 페이지네이션
 - 카트 담기
 - 위시리스트
+- 랜덤상품 설정
 
 ## Project 시연 영상 (랜더밀)
 
-- YouTube :
+- YouTube :https://youtu.be/q7EOialZXgs
 
 ## Project 화면 구현 예시
 
