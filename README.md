@@ -4,12 +4,14 @@
  
 
 ## ⚙️  Project 기술 스택
-- TypeScript
-- React
-- Vite
-- Firebase
-- tailwind/daisyui
-![Static Badge](https://img.shields.io/badge/:badgeContent)
+<img src="https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white">
+<img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
+<img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white">
+<img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white">
+<img src="https://img.shields.io/badge/recoil-3178C6?style=for-the-badge&logo=recoil&logoColor=white">
+<img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
+<img src="https://img.shields.io/badge/daisyui-A0EF8?style=for-the-badge&logo=daisyui&logoColor=white">
 
 ## 💨  Project 기능
 
