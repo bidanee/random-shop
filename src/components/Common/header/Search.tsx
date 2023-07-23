@@ -35,20 +35,21 @@ const Search = () => {
   }, [keyword]);
 
   return (
-    <div className="form-control flex-1 flex-row">
+    <div className=" flex-1 flex-row ">
       <input
-        className="input input-bordered focus:outline-none pl-2  w-32 md:w-48 cursor-pointer"
+        className="hidden md:block input input-bordered focus:outline-none pl-2  w-32 md:w-96 cursor-pointer"
         type="search"
         value={keyword}
         onChange={onChangeData}
         placeholder="검색"
         onBlur={() => setKeyword("")}
       />
+
       {keyItems.length > 0 && keyword && (
-        <div className="absolute">
+        <div className="absolute top-12">
           <ul
             tabIndex={0}
-            className="absolute top-4 menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-48"
+            className="absolute top-1 menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-96"
           >
             {keyItems?.map((search) => (
               <li
@@ -67,8 +68,8 @@ const Search = () => {
       )}
 
       {keyItems.length == 0 && keyword && (
-        <div className="absolute">
-          <ul className="absolute top-4 menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-48">
+        <div className="absolute top-12">
+          <ul className="absolute top-1 menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-96">
             <li>검색결과가 없습니다 </li>
           </ul>
         </div>
