@@ -26,6 +26,7 @@ const CartBtn = () => {
   useEffect(() => {
     setItems(itemData);
   }, []);
+
   return <button onClick={() => onClickCart(detail.id)}>장바구니 담기</button>;
 };
 export default CartBtn;

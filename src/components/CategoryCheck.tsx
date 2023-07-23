@@ -17,7 +17,7 @@ import { itemProps } from "../page/ChoiceItemPage";
 import Pagination from "./Pagination";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { DayCountState, Wishstate } from "../service/atoms";
+import { Wishstate } from "../service/atoms";
 import { Counter } from "../components/DayCount";
 import styled from "styled-components";
 // import Pagination from "./Pagination";
@@ -75,21 +75,21 @@ export const CategoryCheck = () => {
     }
     localStorage.setItem(`${UserId}.baskets`, JSON.stringify(baskets));
   };
-  const [count, setCount] = useRecoilState(DayCountState);
-  const selectIndex = (totalIndex: number, selectingNumber: number) => {
-    const randomIndexArray = [];
-    for (let i = 0; i < selectingNumber; i++) {
-      //check if there is any duplicate index
-      const randomNum = Math.floor(Math.random() * totalIndex);
-      if (randomIndexArray.indexOf(randomNum) === -1) {
-        randomIndexArray.push(randomNum);
-      } else {
-        //if the randomNum is already in the array retry
-        i--;
-      }
-    }
-    return randomIndexArray;
-  };
+  // const [count, setCount] = useRecoilState(DayCountState);
+  // const selectIndex = (totalIndex: number, selectingNumber: number) => {
+  //   const randomIndexArray = [];
+  //   for (let i = 0; i < selectingNumber; i++) {
+  //     //check if there is any duplicate index
+  //     const randomNum = Math.floor(Math.random() * totalIndex);
+  //     if (randomIndexArray.indexOf(randomNum) === -1) {
+  //       randomIndexArray.push(randomNum);
+  //     } else {
+  //       //if the randomNum is already in the array retry
+  //       i--;
+  //     }
+  //   }
+  //   return randomIndexArray;
+  // };
 
   return (
     <div>

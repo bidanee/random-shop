@@ -19,9 +19,8 @@ import {
   Total,
   TotalContainer,
 } from "../styledComponents/PageStyled";
-import { Link } from "react-router-dom";
-import { itemProps } from "./ChoiceItemPage";
 import itemData from "../../public/data/itemData.json";
+import { itemProps } from "./ChoiceItemPage";
 
 const Cart = () => {
   const [items, setItems] = useState<itemProps[]>([]);
@@ -47,7 +46,7 @@ const Cart = () => {
 
   const total = () => {
     const arr: Array<any> = [];
-    newCart.map((id) =>
+    newCart?.map((id) =>
       items.map((item) => {
         if (item.id === id) {
           return arr.push(item);
@@ -72,7 +71,7 @@ const Cart = () => {
           ) : null}
           <CartItemContainer>
             <CartList>
-              {newCart.length > 0 ? (
+              {newCart ?? newCart.length > 0 ? (
                 newCart.map((id) =>
                   items.map((item) => {
                     if (item.id === id) {

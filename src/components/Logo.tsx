@@ -4,7 +4,7 @@ import logo from "../assets/logo/random.png";
 
 const Logo = () => {
   return (
-    <Link to={"/"}>
+    <Link to={"/main"}>
       <Image className={"logoImg"} src={logo} />
     </Link>
   );

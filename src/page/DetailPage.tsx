@@ -4,6 +4,7 @@ import { itemProps } from "./ChoiceItemPage";
 import itemData from "../../public/data/itemData.json";
 import { useLocation } from "react-router-dom";
 import CartBtn from "../components/Cart";
+import tw from "twin.macro";
 
 const DetailItem = () => {
   const [items, setItems] = useState<itemProps[]>([]);
@@ -42,7 +43,12 @@ const DetailItem = () => {
               <DetailP>가격 : {detail.price}</DetailP>
               <DetailP>{detail.desc}</DetailP>
               <BtnDiv>
-                <button onClick={() => onClickWish(detail.name)}>찜하기</button>
+                <button
+                  className="btn-sm btn-accent text-white mr-2"
+                  onClick={() => onClickWish(detail.name)}
+                >
+                  찜하기
+                </button>
                 <CartBtn />
               </BtnDiv>
             </Detail>
@@ -54,7 +60,7 @@ const DetailItem = () => {
 };
 
 const BtnDiv = styled.div`
-  display: flex;
+  ${tw`flex`}
 `;
 const Detail = styled.div``;
 const DetailP = styled.p`
