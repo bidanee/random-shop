@@ -7,7 +7,7 @@ interface InformModalProps {
 const InformModal = ({ dialogRef, inform }: InformModalProps) => {
   return (
     <dialog
-      className="backdrop:bg-transparent w-10/12 rounded-lg bg-green-300 shadow-md text-white outline-none"
+      className=" py-10 backdrop:bg-transparent w-1/3 h-24 rounded-lg bg-green-300 shadow-md text-white outline-none"
       ref={dialogRef}
     >
       <form method="dialog" className="flex justify-center items-center">

@@ -95,7 +95,6 @@ const DeleteBtn = styled.button`
   width: 1.2rem;
   height: 1.2rem;
   border: none;
-
   background: none;
   cursor: pointer;
   font-size: 1rem;

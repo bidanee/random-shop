@@ -13,12 +13,12 @@ const { persistAtom } = recoilPersist({
   storage: localStorage,
 });
 export const loginState = atom({
-  key: "loginState",
+  key: "login",
   default: false,
   effects_UNSTABLE: [persistAtom],
 });
-export const nickNameState = atom({
-  key: "nickName",
+export const displayNameState = atom({
+  key: "displayName",
   default: "",
   effects_UNSTABLE: [persistAtom],
 });
@@ -26,15 +26,18 @@ export const nickNameState = atom({
 export const Wishstate = atom({
   key: "Wish",
   default: false,
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const CartState = atom({
   key: "cart",
   default: false,
+  effects_UNSTABLE: [persistAtom],
 });
 export const DayCountState = atom({
   key: "count",
   default: 0,
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const itemList = selector<itemProps[]>({

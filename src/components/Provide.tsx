@@ -1,12 +1,10 @@
-import { Navigate, Outlet } from "react-router";
-import { user } from "../firebase/firebaseSetup";
-import { useState } from "react";
-import { useRecoilState } from "recoil";
-import { loginState } from "../service/atoms";
+import { Outlet } from "react-router";
+
+import { Link } from "react-router-dom";
 
 const ProtectedRoute = () => {
-  const [isLogin] = useRecoilState(loginState);
+  const isLoggedIn = JSON.parse(localStorage.getItem("login"));
 
-  return isLogin ? <Outlet /> : <Navigate to={"/"} />;
+  return isLoggedIn ? <Outlet /> : <Link to={"/"} />;
 };
 export default ProtectedRoute;

@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
+import tw from "twin.macro";
 export const PageContainer = styled.div`
-  min-height: calc(100% - 5rem - 4rem);
-  padding-top: 5rem;
+  ${tw`w-full`}
 `;
 
 export const PageMainContainer = styled.div`

@@ -21,7 +21,7 @@ import {
 } from "firebase/auth";
 import { useNavigate } from "react-router";
 import { useRecoilState } from "recoil";
-import { loginState, nickNameState } from "../service/atoms";
+import { displayNameState } from "../service/atoms";
 
 const Divider = styled.div`
   display: flex;
@@ -46,18 +46,31 @@ const LogoTitle = styled(Logo)`
 const Login = () => {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
-  const [, setLogIn] = useRecoilState(loginState);
-  const [, setNickName] = useRecoilState(nickNameState);
+
+  const [, setDisplayName] = useRecoilState(displayNameState);
   const navigate = useNavigate();
+  const currentUser = auth.currentUser;
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, pwd);
       alert("로그인되었습니다.");
-      setLogIn(true);
-      setNickName(auth.currentUser.displayName);
+      JSON.stringify(localStorage.setItem("login", JSON.stringify(true)));
+      JSON.stringify(
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            uid: currentUser.uid,
+            dispayName: currentUser.displayName,
+            wish: [],
+          })
+        )
+      );
+      setDisplayName(auth.currentUser.displayName);
       navigate("/main");
     } catch (error) {
+      console.error(error);
       alert("아이디 또는 비밀번호가 잘못되었습니다.");
     }
   };
@@ -66,8 +79,7 @@ const Login = () => {
     try {
       await signInWithPopup(auth, provider);
       alert("구글 로그인이 성공적으로 되었습니다.");
-      setLogIn(true);
-      setNickName(auth.currentUser.displayName);
+      setDisplayName(auth.currentUser.displayName);
       navigate("/main");
     } catch (error: any) {
       if (error.code === "로그인 실패") {
@@ -84,7 +96,7 @@ const Login = () => {
           <LogoTitle />
           <Form onSubmit={handleSubmit}>
             <NameLabel>
-              이메일
+              <span className="flex justify-start mb-1">이메일</span>
               <Input
                 type="email"
                 placeholder="이메일을 입력해주세요"
@@ -93,7 +105,7 @@ const Login = () => {
               />
             </NameLabel>
             <NameLabel>
-              비밀번호
+              <span className="flex justify-start mb-1">비밀번호</span>
               <Input
                 type="password"
                 placeholder="비밀번호을 입력해주세요"
@@ -101,13 +113,17 @@ const Login = () => {
                 onChange={(e) => setPwd(e.target.value)}
               />
             </NameLabel>
-            <MiniButton>로그인</MiniButton>
+            <MiniButton type="submit">로그인</MiniButton>
             <Divider>
               <Line></Line>
               <Text>또는</Text>
               <Line></Line>
             </Divider>
-            <button type="button" onClick={handleGoogleLogin}>
+            <button
+              className="mb-9 mx-2"
+              type="button"
+              onClick={handleGoogleLogin}
+            >
               구글로 로그인하기
             </button>
           </Form>
