@@ -1,132 +1,142 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { Navigate, useNavigate } from "react-router";
-import { ValidationFormProps } from "../../interface/member/interface";
-import { validate } from "./singupValidate";
-import {
-  createUserWithEmailAndPassword,
-  fetchSignInMethodsForEmail,
-  updateProfile,
-} from "firebase/auth";
+import { useRef, useState } from "react";
+
 import { auth } from "../../firebase/firebaseSetup";
+import {
+  ChangeForm,
+  Container,
+  Form,
+  FormContainer,
+  GoPage,
+  Input,
+  MiniButton,
+  NameLabel,
+  Wrap,
+} from "../../styledComponents/SignUpIn";
+import Logo from "../Logo";
+import { useNavigate } from "react-router";
+import firebase from "firebase/compat/app";
+import InformModal from "../Common/InformModal";
 
 export default function SignUp() {
-  const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [resultEmailMsg, setResultMsg] = useState("");
-  const [resultNickNameMsg, setResultNickNameMsg] = useState("");
-  const [usableEmail, setUsableEmail] = useState(false);
-  const [usableNickName, setUsableNickName] = useState(false);
-  const [onChangeEmail, setOnChangeEmail] = useState("");
-  const [onChangeNickName, setOnChangeNickName] = useState("");
-  const navigate = useNavigate();
-  const {
-    register,
-    watch,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<ValidationFormProps>({
-    resolver: yupResolver(validate),
-    mode: "onChange",
-  });
+  const [checkPwd, setCheckPwd] = useState("");
+  const [displayName, setDisplayName] = useState("");
+  const [check, setCheck] = useState(true);
+  const [msg, setMsg] = useState("");
 
-  const CheckEmail = async () => {
-    if (email === "") {
-      alert("이메일을 입력하세요.");
-      return;
-    }
-    try {
-      const result = await fetchSignInMethodsForEmail(auth, email);
-      if (result[0] === "password") {
-        setErrorMessage("이미 사용중인 이메일입니다.");
-      } else if (result.length === 0) {
-        setErrorMessage("사용 가능한 이메일 입니다.");
-      } else {
-        setErrorMessage("구글로 가입된 이메일입니다.");
-      }
-    } catch (error) {
-      console.error("이메일 에러", error);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const navigate = useNavigate();
+
+  const onChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const {
+      target: { name, value },
+    } = e;
+    if (name === "displayName") {
+      setDisplayName(value);
+    } else if (name === "email") {
+      setEmail(value);
+    } else if (name === "pwd") {
+      setPwd(value);
+    } else if (name === "checkPwd") {
+      setCheckPwd(value);
     }
   };
   const handleJoin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      setErrorMessage("");
-      const joinedUser = await createUserWithEmailAndPassword(auth, email, pwd);
-      await updateProfile(joinedUser.user, { displayName: nickname });
 
-      alert("회원가입이 완료되었습니다.");
+    if (pwd !== checkPwd) {
+      setCheck(false);
+      return;
+    } else {
+      setCheck(true);
+    }
+    try {
+      const data = await auth.createUserWithEmailAndPassword(email, pwd);
+      await data.user.updateProfile({
+        displayName: displayName,
+      });
+      alert(`${displayName}님, 환영합니다. 회원가입 되었습니다.`);
       navigate("/");
-      return joinedUser.user;
-    } catch (e: any) {
-      console.error(e);
+      return;
+    } catch (error) {
+      const authError = error as firebase.auth.Error;
+      if (!dialogRef.current) return;
+      dialogRef.current.showModal();
+      setTimeout(() => {
+        if (!dialogRef.current) return;
+        dialogRef.current.close();
+      }, 1000);
+      if (authError.code === "auth/email-already-in-use") {
+        setMsg("이미 가입된 이메일입니다.");
+      } else if (authError.code === "auth/weak-password") {
+        setMsg("비밀번호는 6자리 이상 입력해주세요.");
+      } else if (authError.code === "auth/wrong-password") {
+        setMsg("비밀번호를 잘못 입력하였습니다. 다시 입력해주세요.");
+      }
     }
   };
   return (
-    <div className="mt-24">
-      <div className="">
-        <div />
-        <form className="flex flex-col" onSubmit={handleSubmit(handleJoin)}>
-          <label htmlFor="email">
-            이메일
-            <input
-              id="email"
-              type="email"
-              placeholder="이메일을 입력해주세요"
-              required
-              {...register("email", {
-                onChange: (e) => {
-                  setOnChangeEmail(e.target.value);
-                  setUsableEmail(false);
-                  setResultMsg("중복확인을 눌러 주세요");
-                },
-              })}
-            />
-          </label>
-          <button onClick={CheckEmail}>중복확인</button>
-          <label>
-            비밀번호
-            <input
-              id="pw"
-              type="password"
-              placeholder="비밀번호을 입력해주세요"
-              required
-              {...register("pw")}
-            />
-          </label>
-          <label>
-            비밀번호 확인
-            <input
-              id="checkPw"
-              type="password"
-              placeholder="비밀번호를 다시 입력해주세요."
-              {...register("checkPw")}
-            />
-          </label>
-          <label>
-            닉네임
-            <input
-              type="text"
-              placeholder="닉네임을 입력해주세요"
-              {...register("nickName", {
-                onChange: (e) => {
-                  setOnChangeNickName(e.target.value);
-                },
-              })}
-            />
-          </label>
-          <button type="submit">회원가입</button>
-        </form>
-      </div>
-      <div>
-        <p>
-          계정이 있으신가요?{" "}
-          <button onClick={() => navigate("/")}>로그인</button>
-        </p>
-      </div>
-    </div>
+    <Container>
+      <Wrap>
+        <FormContainer>
+          <Logo />
+          <Form onSubmit={handleJoin}>
+            <NameLabel>
+              <span className="flex justify-start mb-1">이메일</span>
+              <Input
+                name="email"
+                type="email"
+                value={email}
+                onChange={onChanged}
+                placeholder="이메일을 입력해주세요"
+                required
+              />
+            </NameLabel>
+            <NameLabel>
+              <span className="flex justify-start mb-1">비밀번호</span>
+              <Input
+                name="pwd"
+                type="password"
+                value={pwd}
+                onChange={onChanged}
+                placeholder="비밀번호을 입력해주세요"
+                required
+              />
+            </NameLabel>
+            <NameLabel>
+              <span>비밀번호 확인</span>
+              <Input
+                name="checkPwd"
+                type="password"
+                value={checkPwd}
+                onChange={onChanged}
+                placeholder="비밀번호를 다시 입력해주세요."
+              />
+              <span className="text-sm text-error">
+                {check === true ? "" : "비밀번호가 일치하지 않습니다."}
+              </span>
+            </NameLabel>
+            <NameLabel>
+              <span>닉네임</span>
+              <Input
+                type="text"
+                name="displayName"
+                value={displayName}
+                onChange={onChanged}
+                placeholder="닉네임을 입력해주세요"
+              />
+            </NameLabel>
+            <MiniButton type="submit">회원가입</MiniButton>
+          </Form>
+        </FormContainer>
+        <ChangeForm>
+          <p className="p-2">
+            계정이 있으신가요? <GoPage to={"/"}>로그인</GoPage>
+          </p>
+        </ChangeForm>
+      </Wrap>
+      <InformModal inform={msg} dialogRef={dialogRef} />
+    </Container>
   );
 }
