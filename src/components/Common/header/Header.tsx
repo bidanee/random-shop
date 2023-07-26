@@ -7,6 +7,7 @@ import { auth } from "../../../firebase/firebaseSetup";
 const Header = () => {
   const navigate = useNavigate();
   const isLoggedIn = JSON.parse(localStorage.getItem("login"));
+
   const [displayName, setDisplayName] = useState("");
 
   const handleLogout = () => {
@@ -21,7 +22,7 @@ const Header = () => {
       await setDisplayName(user?.displayName);
     });
     return name;
-  }, []);
+  }, [displayName]);
   return (
     <>
       {isLoggedIn ? (

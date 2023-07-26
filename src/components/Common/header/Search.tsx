@@ -55,7 +55,7 @@ const Search = () => {
               <li
                 className="cursor-pointer mb-1 hover:bg-green-100"
                 key={search.id}
-                onClick={() => {
+                onMouseDown={() => {
                   navigation(`/fooditem/${search.id}`);
                   setKeyword("");
                 }}
