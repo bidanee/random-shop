@@ -8,8 +8,6 @@ const Header = () => {
   const [displayName, setDisplayName] = useState("");
   const navigate = useNavigate();
   const isLoggedIn = JSON.parse(localStorage.getItem("login"));
-  const userId = JSON.parse(localStorage.getItem("user")).email;
-  const getCartList = JSON.parse(localStorage.getItem(`${userId}.cart`));
 
   const handleLogout = () => {
     auth
@@ -29,7 +27,8 @@ const Header = () => {
       await setDisplayName(user?.displayName);
     });
     return name;
-  }, [displayName, getCartList]);
+  }, []);
+
   return (
     <>
       {isLoggedIn ? (
