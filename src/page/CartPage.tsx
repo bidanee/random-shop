@@ -25,8 +25,8 @@ import { itemProps } from "./ChoiceItemPage";
 const Cart = () => {
   const [items, setItems] = useState<itemProps[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const UserId = JSON.parse(localStorage.getItem("user")).email;
-  const getCartList = JSON.parse(localStorage.getItem(`${UserId}.cart`));
+  const userId = JSON.parse(localStorage.getItem("user")).email;
+  const getCartList = JSON.parse(localStorage.getItem(`${userId}.cart`));
   const newCart = Array.from(new Set(getCartList));
   const [count, setCount] = useState<number>(getCartList.length);
   useEffect(() => {
@@ -35,12 +35,12 @@ const Cart = () => {
   const MinusBtn = (id: number) => {
     getCartList.splice(getCartList.indexOf(id), 1);
     setCount(count - 1);
-    localStorage.setItem(`${UserId}.cart`, JSON.stringify(getCartList));
+    localStorage.setItem(`${userId}.cart`, JSON.stringify(getCartList));
   };
   const PlusBtn = (id: number) => {
     getCartList.push(id);
     setCount(count + 1);
-    localStorage.setItem(`${UserId}.cart`, JSON.stringify(getCartList));
+    localStorage.setItem(`${userId}.cart`, JSON.stringify(getCartList));
   };
   //count
 

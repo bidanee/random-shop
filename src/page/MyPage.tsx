@@ -10,6 +10,7 @@ import Pagination from "../components/Pagination";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { Wishstate } from "../service/atoms";
+import { auth } from "../firebase/firebaseSetup";
 
 const Container = styled.div`
   display: flex;
@@ -107,19 +108,18 @@ const MyPage = () => {
   const limit = 6;
   const offset = (page - 1) * limit;
   const getUser = JSON.parse(localStorage.getItem("user"));
-  const getWishList = JSON.parse(
-    localStorage.getItem(`${getUser.email}.baskets`)
-  );
-  const total = getWishList.length;
-  const UserId = JSON.parse(localStorage.getItem("user")).email;
-  const baskets = JSON.parse(localStorage.getItem(`${UserId}.baskets`)) || [];
+  const displayName = auth.currentUser.displayName;
+  const getWishList = JSON.parse(localStorage.getItem(`${getUser.email}`));
+  const total = getWishList?.length;
+  const userId = JSON.parse(localStorage.getItem("user")).email;
+  const baskets = JSON.parse(localStorage.getItem(userId)) || [];
 
   const onDelBtnClick = (boardEl: string) => {
     if (confirm("삭제 하시겠습니까?") === true) {
       baskets.splice(baskets.indexOf(boardEl), 1);
       setWish(false);
     }
-    localStorage.setItem(`${UserId}.baskets`, JSON.stringify(baskets));
+    localStorage.setItem(userId, JSON.stringify(baskets));
   };
   useEffect(() => {
     setItems(itemData);
@@ -134,10 +134,10 @@ const MyPage = () => {
             <Hr />
             <DashBoard>
               <Me>
-                <Wish>{getUser.displayName}'s WishList</Wish>
+                <Wish>{displayName}'s WishList</Wish>
                 <Wrap>
                   <WishContainer>
-                    {getWishList.length > 0 ? (
+                    {getWishList && getWishList.length > 0 ? (
                       getWishList
                         .slice(offset, offset + limit)
                         .map((item: string) =>

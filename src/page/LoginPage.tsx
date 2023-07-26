@@ -12,13 +12,9 @@ import {
   Wrap,
 } from "../styledComponents/SignUpIn";
 import Logo from "../components/Logo";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { auth } from "../firebase/firebaseSetup";
-import {
-  GoogleAuthProvider,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-} from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router";
 import { useRecoilState } from "recoil";
 import { displayNameState } from "../service/atoms";
@@ -46,24 +42,22 @@ const LogoTitle = styled(Logo)`
 const Login = () => {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
-
   const [, setDisplayName] = useRecoilState(displayNameState);
   const navigate = useNavigate();
-  const currentUser = auth.currentUser;
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, pwd);
+      await auth.signInWithEmailAndPassword(email, pwd);
+      const currentUser = auth.currentUser;
       alert("로그인되었습니다.");
       JSON.stringify(localStorage.setItem("login", JSON.stringify(true)));
       JSON.stringify(
         localStorage.setItem(
           "user",
           JSON.stringify({
-            uid: currentUser.uid,
+            email: currentUser.email,
             dispayName: currentUser.displayName,
-            wish: [],
           })
         )
       );

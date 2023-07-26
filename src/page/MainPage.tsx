@@ -28,8 +28,8 @@ const Main = () => {
     return i.like === true;
   });
   //wishItem
-  const UserId = JSON.parse(localStorage.getItem("user")).email;
-  const baskets = JSON.parse(localStorage.getItem(`${UserId}.baskets`)) || [];
+  const userId = JSON.parse(localStorage.getItem("user")).email;
+  const baskets = JSON.parse(localStorage.getItem(userId)) || [];
   const [wish, setWish] = useRecoilState(Wishstate);
   useEffect(() => {
     setItems(itemData);
@@ -42,7 +42,7 @@ const Main = () => {
       baskets.splice(baskets.indexOf(boardEl), 1);
       setWish(false);
     }
-    localStorage.setItem(`${UserId}.baskets`, JSON.stringify(baskets));
+    localStorage.setItem(userId, JSON.stringify(baskets));
   };
 
   return (

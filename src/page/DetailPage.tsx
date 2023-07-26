@@ -12,8 +12,8 @@ const DetailItem = () => {
   const id = location.pathname.split("/")[2];
   const item = items.filter((i) => i.id === Number(id));
   const detail = item[0];
-  const UserId = JSON.parse(localStorage.getItem("user")).email;
-  const baskets = JSON.parse(localStorage.getItem(`${UserId}.baskets`)) || [];
+  const userId = JSON.parse(localStorage.getItem("user")).email;
+  const baskets = JSON.parse(localStorage.getItem(userId)) || [];
   useEffect(() => {
     setItems(itemData);
   }, []);
@@ -25,7 +25,7 @@ const DetailItem = () => {
         baskets.splice(baskets.indexOf(boardEl), 1);
       }
     }
-    localStorage.setItem(`${UserId}.baskets`, JSON.stringify(baskets));
+    localStorage.setItem(userId, JSON.stringify(baskets));
   };
   useEffect(() => {
     setItems(itemData);

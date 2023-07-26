@@ -10,15 +10,15 @@ const CartBtn = () => {
   const id = location.pathname.split("/")[2];
   const item = items.filter((i) => i.id === Number(id));
   const detail = item[0];
-  const UserId = JSON.parse(localStorage.getItem("user")).email;
-  const cart = JSON.parse(localStorage.getItem(`${UserId}.cart`)) || [];
+  const userId = JSON.parse(localStorage.getItem("user")).email;
+  const cart = JSON.parse(localStorage.getItem(`${userId}.cart`)) || [];
   const navigation = useNavigate();
   useEffect(() => {
     setItems(itemData);
   }, []);
   const onClickCart = (id: number) => {
     cart.push(id);
-    localStorage.setItem(`${UserId}.cart`, JSON.stringify(cart));
+    localStorage.setItem(`${userId}.cart`, JSON.stringify(cart));
     if (confirm("장바구니에 담았습니다. 장바구니로 가시겠습니까?") === true) {
       navigation("/cart");
     }

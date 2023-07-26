@@ -31,8 +31,8 @@ export interface itemProps {
 
 const ChoiceItem = () => {
   const [items, setItems] = useState<itemProps[]>([]);
-  const UserId = JSON.parse(localStorage.getItem("user")).email;
-  const baskets = JSON.parse(localStorage.getItem(`${UserId}.baskets`)) || [];
+  const userId = JSON.parse(localStorage.getItem("user")).email;
+  const baskets = JSON.parse(localStorage.getItem(userId)) || [];
   const [wish, setWish] = useRecoilState(Wishstate);
   useEffect(() => {
     fetch("http://localhost:5173/data/itemData.json", { method: "GET" })
@@ -49,7 +49,7 @@ const ChoiceItem = () => {
       baskets.splice(baskets.indexOf(boardEl), 1);
       setWish(false);
     }
-    localStorage.setItem(`${UserId}.baskets`, JSON.stringify(baskets));
+    localStorage.setItem(userId, JSON.stringify(baskets));
   };
 
   const FilterItem = items.filter((item) => item.new === true);
