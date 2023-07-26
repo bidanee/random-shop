@@ -6,11 +6,11 @@ import {
 import itemData from "../../public/data/itemData.json";
 import { useEffect, useState } from "react";
 import { itemProps } from "./ChoiceItemPage";
-import Pagination from "../components/Pagination";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { Wishstate } from "../service/atoms";
-import { auth } from "../firebase/firebaseSetup";
+import { WishState } from "../service/atoms";
+import { UserObjProps } from "../interface/member/interface";
+import tw from "twin.macro";
 
 const Container = styled.div`
   display: flex;
@@ -20,7 +20,6 @@ const Container = styled.div`
 `;
 const MypageList = styled.div`
   width: 45rem;
-  height: 45rem;
   padding: 1rem;
   background-color: #f8f1f1;
   border-radius: 20px;
@@ -58,9 +57,9 @@ const Wrap = styled.div`
   padding: 1rem;
 `;
 const WishContainer = styled.div`
+  ${tw`h-fit`}
   display: flex;
   width: 40rem;
-  height: 30rem;
   flex-wrap: wrap;
   padding: 0.5rem 3.1rem;
 `;
@@ -101,28 +100,24 @@ const DeleteBtn = styled.button`
   font-size: 1rem;
   margin-left: 1rem;
 `;
-const MyPage = () => {
+const MyPage = ({ userObj }: UserObjProps) => {
   const [items, setItems] = useState<itemProps[]>([]);
-  const [page, setPage] = useState(1);
-  const [wish, setWish] = useRecoilState(Wishstate);
-  const limit = 6;
-  const offset = (page - 1) * limit;
-  const getUser = JSON.parse(localStorage.getItem("user"));
-  const displayName = auth.currentUser.displayName;
-  const getWishList = JSON.parse(localStorage.getItem(`${getUser.email}`));
-  const total = getWishList?.length;
+  const [wish, setWish] = useRecoilState(WishState);
+  const [wishList, setWishList] = useState(null);
   const userId = JSON.parse(localStorage.getItem("user")).email;
-  const baskets = JSON.parse(localStorage.getItem(userId)) || [];
+  const baskets = JSON.parse(localStorage.getItem(userId));
 
   const onDelBtnClick = (boardEl: string) => {
     if (confirm("삭제 하시겠습니까?") === true) {
       baskets.splice(baskets.indexOf(boardEl), 1);
       setWish(false);
+      setWishList(baskets);
     }
     localStorage.setItem(userId, JSON.stringify(baskets));
   };
   useEffect(() => {
     setItems(itemData);
+    setWishList(baskets);
   }, [wish]);
 
   return (
@@ -134,46 +129,37 @@ const MyPage = () => {
             <Hr />
             <DashBoard>
               <Me>
-                <Wish>{displayName}'s WishList</Wish>
+                <Wish>{userObj?.displayName}'s WishList</Wish>
                 <Wrap>
                   <WishContainer>
-                    {getWishList && getWishList.length > 0 ? (
-                      getWishList
-                        .slice(offset, offset + limit)
-                        .map((item: string) =>
-                          items.map((i) => {
-                            if (item === i.name) {
-                              return (
-                                <ItemContainer key={i.id}>
-                                  <Img src={i.image} />
-                                  <Hr />
-                                  <NameContainer>
-                                    <Name to={`/fooditem/${i.id}`}>
-                                      {i.name}
-                                    </Name>
-                                    <DeleteBtn
-                                      onClick={() => onDelBtnClick(i.name)}
-                                    >
-                                      X
-                                    </DeleteBtn>
-                                  </NameContainer>
-                                </ItemContainer>
-                              );
-                            }
-                          })
-                        )
+                    {wishList && wishList.length > 0 ? (
+                      wishList.map((item: string) =>
+                        items.map((i) => {
+                          if (item === i.name) {
+                            return (
+                              <ItemContainer key={i.id}>
+                                <Img src={i.image} />
+                                <Hr />
+                                <NameContainer>
+                                  <Name to={`/fooditem/${i.id}`}>{i.name}</Name>
+                                  <DeleteBtn
+                                    onClick={() => onDelBtnClick(i.name)}
+                                  >
+                                    X
+                                  </DeleteBtn>
+                                </NameContainer>
+                              </ItemContainer>
+                            );
+                          }
+                        })
+                      )
                     ) : (
-                      <p>담긴 상품이 없습니다.</p>
+                      <div className="p-3 flex w-full h-96 justify-center items-center text-3xl">
+                        <p>담긴 상품이 없습니다.</p>
+                      </div>
                     )}
                   </WishContainer>
                 </Wrap>
-
-                <Pagination
-                  total={total}
-                  limit={limit}
-                  page={page}
-                  setPage={setPage}
-                />
               </Me>
             </DashBoard>
           </MypageList>

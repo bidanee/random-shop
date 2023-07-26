@@ -17,7 +17,7 @@ import { itemProps } from "../page/ChoiceItemPage";
 import Pagination from "./Pagination";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { Wishstate } from "../service/atoms";
+import { WishState } from "../service/atoms";
 import { Counter } from "../components/DayCount";
 import styled from "styled-components";
 // import Pagination from "./Pagination";
@@ -61,7 +61,7 @@ export const CategoryCheck = () => {
   //wishItem
   const userId = JSON.parse(localStorage.getItem("user")).email;
   const baskets = JSON.parse(localStorage.getItem(userId)) || [];
-  const [wish, setWish] = useRecoilState(Wishstate);
+  const [wish, setWish] = useRecoilState(WishState);
   useEffect(() => {
     setItems(itemData);
   }, [wish]);

@@ -62,7 +62,7 @@ const Login = () => {
         )
       );
       setDisplayName(auth.currentUser.displayName);
-      navigate("/main");
+      location.reload();
     } catch (error) {
       console.error(error);
       alert("아이디 또는 비밀번호가 잘못되었습니다.");
@@ -74,7 +74,7 @@ const Login = () => {
       await signInWithPopup(auth, provider);
       alert("구글 로그인이 성공적으로 되었습니다.");
       setDisplayName(auth.currentUser.displayName);
-      navigate("/main");
+      navigate("/");
     } catch (error: any) {
       if (error.code === "로그인 실패") {
         alert("로그인에 실패 하였습니다.");

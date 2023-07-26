@@ -71,7 +71,7 @@ const Cart = () => {
           ) : null}
           <CartItemContainer>
             <CartList>
-              {newCart ?? newCart.length > 0 ? (
+              {newCart && newCart.length > 0 ? (
                 newCart.map((id) =>
                   items.map((item) => {
                     if (item.id === id) {

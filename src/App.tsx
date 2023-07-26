@@ -7,32 +7,41 @@ import Cart from "./page/CartPage";
 import MyPage from "./page/MyPage";
 import ChoiceItem from "./page/ChoiceItemPage";
 import DetailItem from "./page/DetailPage";
-import { Suspense } from "react";
+import { useEffect, useState } from "react";
 import Footer from "./components/Footer";
-import ProtectedRoute from "./components/Provide";
-import LoadingSpinner from "./components/Common/LoadingSpinner";
+import firebase from "./firebase/firebaseSetup";
 import Header from "./components/Common/header/Header";
 import GlobalStyles from "./styles/GlobalStyle";
+import { auth } from "./firebase/firebaseSetup";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userObj, setUserObj] = useState<firebase.User | null>(null);
+  useEffect(() => {
+    const authChange = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(true);
+        setUserObj(user);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+    return authChange;
+  }, []);
   return (
     <BrowserRouter>
       <RecoilRoot>
         <GlobalStyles />
-        <Suspense fallback={<LoadingSpinner />}>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route element={<ProtectedRoute />}>
-              <Route path="/main" element={<Main />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/mypage" element={<MyPage />} />
-              <Route path="/choice" element={<ChoiceItem />} />
-              <Route path="/fooditem/:id" element={<DetailItem />} />
-            </Route>
-          </Routes>
-        </Suspense>
+        <Header />
+        <Routes>
+          <Route path="/" element={isLoggedIn ? <Main /> : <Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/mypage" element={<MyPage userObj={userObj} />} />
+          <Route path="/choice" element={<ChoiceItem />} />
+          <Route path="/fooditem/:id" element={<DetailItem />} />
+        </Routes>
+
         <Footer />
       </RecoilRoot>
     </BrowserRouter>

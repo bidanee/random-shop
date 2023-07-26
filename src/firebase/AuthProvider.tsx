@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [isLogin, setIsLogin] = useState(false);
   useEffect(() => {
-    onAuthStateChanged(auth, async (user) => {
+    auth.onAuthStateChanged(async (user) => {
       if (user) {
         setCurrentUser(user);
         setIsLogin(true);

@@ -3,6 +3,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import Search from "./Search";
 import { useEffect, useState } from "react";
 import { auth } from "../../../firebase/firebaseSetup";
+import { UserObjProps } from "../../../interface/member/interface";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Header = () => {
           <div className="flex-1">
             <button
               className=" btn btn-ghost hover:bg-green-100 normal-case text-sm sm:text-3xl text-green-400 font-extrabold "
-              onClick={() => navigate("/main")}
+              onClick={() => navigate("/")}
             >
               RandomMeal
             </button>

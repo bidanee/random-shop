@@ -18,7 +18,7 @@ import { itemProps } from "./ChoiceItemPage";
 import { Link } from "react-router-dom";
 
 import { useRecoilState } from "recoil";
-import { Wishstate } from "../service/atoms";
+import { WishState } from "../service/atoms";
 import styled from "styled-components";
 
 const Main = () => {
@@ -30,7 +30,7 @@ const Main = () => {
   //wishItem
   const userId = JSON.parse(localStorage.getItem("user")).email;
   const baskets = JSON.parse(localStorage.getItem(userId)) || [];
-  const [wish, setWish] = useRecoilState(Wishstate);
+  const [wish, setWish] = useRecoilState(WishState);
   useEffect(() => {
     setItems(itemData);
   }, [wish]);

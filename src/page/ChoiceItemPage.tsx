@@ -15,7 +15,7 @@ import {
 import { CategoryCheck } from "../components/CategoryCheck";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { Wishstate } from "../service/atoms";
+import { WishState } from "../service/atoms";
 import styled from "styled-components";
 export interface itemProps {
   id: number;
@@ -33,7 +33,7 @@ const ChoiceItem = () => {
   const [items, setItems] = useState<itemProps[]>([]);
   const userId = JSON.parse(localStorage.getItem("user")).email;
   const baskets = JSON.parse(localStorage.getItem(userId)) || [];
-  const [wish, setWish] = useRecoilState(Wishstate);
+  const [wish, setWish] = useRecoilState(WishState);
   useEffect(() => {
     fetch("http://localhost:5173/data/itemData.json", { method: "GET" })
       .then((res) => res.json())
@@ -49,7 +49,7 @@ const ChoiceItem = () => {
       baskets.splice(baskets.indexOf(boardEl), 1);
       setWish(false);
     }
-    localStorage.setItem(userId, JSON.stringify(baskets));
+    baskets.push(boardEl);
   };
 
   const FilterItem = items.filter((item) => item.new === true);

@@ -23,10 +23,10 @@ export const displayNameState = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const Wishstate = atom({
-  key: "Wish",
+export const WishState = atom({
+  key: "wish",
   default: false,
-  effects_UNSTABLE: [persistAtom],
+  dangerouslyAllowMutability: true,
 });
 
 export const CartState = atom({
