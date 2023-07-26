@@ -28,7 +28,7 @@ const Cart = () => {
   const userId = JSON.parse(localStorage.getItem("user")).email;
   const getCartList = JSON.parse(localStorage.getItem(`${userId}.cart`));
   const newCart = Array.from(new Set(getCartList));
-  const [count, setCount] = useState<number>(getCartList.length);
+  const [count, setCount] = useState<number>(getCartList?.length);
   useEffect(() => {
     setItems(itemData);
   }, [getCartList]);
@@ -66,7 +66,7 @@ const Cart = () => {
     <PageContainer>
       <PageMainContainer>
         <CartPageContainer>
-          {newCart.length > 0 ? (
+          {newCart && newCart.length > 0 ? (
             <CartTitle>장바구니에 담긴 상품</CartTitle>
           ) : null}
           <CartItemContainer>

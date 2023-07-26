@@ -3,19 +3,25 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import Search from "./Search";
 import { useEffect, useState } from "react";
 import { auth } from "../../../firebase/firebaseSetup";
-import { UserObjProps } from "../../../interface/member/interface";
 
 const Header = () => {
+  const [displayName, setDisplayName] = useState("");
   const navigate = useNavigate();
   const isLoggedIn = JSON.parse(localStorage.getItem("login"));
-
-  const [displayName, setDisplayName] = useState("");
+  const userId = JSON.parse(localStorage.getItem("user")).email;
+  const getCartList = JSON.parse(localStorage.getItem(`${userId}.cart`));
 
   const handleLogout = () => {
-    auth.signOut();
-    localStorage.removeItem("login");
-    localStorage.removeItem("user");
-    navigate("/");
+    auth
+      .signOut()
+      .then(() => {
+        localStorage.removeItem("login");
+        localStorage.removeItem("user");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   useEffect(() => {
@@ -23,7 +29,7 @@ const Header = () => {
       await setDisplayName(user?.displayName);
     });
     return name;
-  }, [displayName]);
+  }, [displayName, getCartList]);
   return (
     <>
       {isLoggedIn ? (
@@ -57,7 +63,6 @@ const Header = () => {
                 onClick={() => navigate("/cart")}
               >
                 <AiOutlineShoppingCart size={24} />
-                <span className="badge badge-sm indicator-item">8</span>
               </div>
             </label>
           </div>
