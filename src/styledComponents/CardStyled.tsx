@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import tw from "twin.macro";
 
 export const List = styled.div`
   width: 100%;
@@ -15,10 +16,7 @@ export const Title = styled.h2`
   font-weight: bold;
 `;
 export const ItemContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 2rem;
+  ${tw`w-full flex flex-col m-8`}
 `;
 export const CardContainer = styled.div`
   display: flex;

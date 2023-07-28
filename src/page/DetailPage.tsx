@@ -83,24 +83,19 @@ const Image = styled.img`
 `;
 const DetailContainer = styled.div`
   display: flex;
-  /* justify-content: center; */
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
   width: 49rem;
   height: 20rem;
-  margin: 3rem;
+  /* margin: 3rem; */
   padding-right: 2rem;
   border: 1px solid black;
   border-radius: 1rem;
   box-shadow: 0px 1px 2px 3px rgb(0 8 4 / 55%);
 `;
-const Container = styled.div`
-  padding: 10rem;
-`;
+const Container = styled.div``;
 const Wrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  padding-top: 5rem;
+  ${tw`w-full h-screen flex flex-wrap justify-center items-center`}
 `;
 
 export default DetailItem;

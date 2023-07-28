@@ -91,23 +91,12 @@ const ChoiceItem = () => {
       </ItemContainer>
       <Wrap>
         <Container>
-          <GoWish to={"/myPage"}>위시리스트에서 선택하기</GoWish>
           <CategoryCheck />
         </Container>
       </Wrap>
     </List>
   );
 };
-const GoWish = styled(Link)`
-  text-align: center;
-  padding: 0.5rem;
-  color: white;
-  font-weight: bolder;
-  background-color: #49d69b;
-  margin: 1rem 0;
-  border-radius: 1rem;
-  width: 12rem;
-`;
 const Container = styled(CardContainer)`
   flex-direction: column;
   justify-content: center;

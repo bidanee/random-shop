@@ -66,9 +66,11 @@ const Cart = () => {
     <PageContainer>
       <PageMainContainer>
         <CartPageContainer>
-          {newCart && newCart.length > 0 ? (
-            <CartTitle>장바구니에 담긴 상품</CartTitle>
-          ) : null}
+          <div>
+            {newCart && newCart.length > 0 ? (
+              <CartTitle>장바구니에 담긴 상품</CartTitle>
+            ) : null}
+          </div>
           <CartItemContainer>
             <CartList>
               {newCart && newCart.length > 0 ? (

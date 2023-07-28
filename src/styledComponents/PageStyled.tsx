@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import tw from "twin.macro";
 export const PageContainer = styled.div`
-  ${tw`w-full`}
+  ${tw`w-full h-full`}
 `;
 
 export const PageMainContainer = styled.div`
@@ -36,6 +36,7 @@ export const GoChoicePage = styled(Link)`
 `;
 
 export const CartPageContainer = styled.div`
+  ${tw`justify-center items-center w-11/12`}
   padding: 3rem;
   display: flex;
   flex-direction: column;
@@ -49,9 +50,7 @@ export const CartTitle = styled.h2`
 `;
 
 export const CartItemContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  ${tw`w-11/12 flex flex-col justify-start`}
 `;
 
 export const ItemBox = styled.div`
@@ -69,7 +68,7 @@ export const DetailBox = styled.div`
   flex-direction: column;
 `;
 export const CartList = styled.div`
-  display: flex;
+  ${tw`flex justify-start`}
   flex-wrap: wrap;
 `;
 
