@@ -35,9 +35,14 @@ export const CartState = atom({
   effects_UNSTABLE: [persistAtom],
 });
 export const DayCountState = atom({
-  key: "count",
+  key: "dayCount",
   default: 0,
   effects_UNSTABLE: [persistAtom],
+});
+
+export const CountState = atom({
+  key: "count",
+  default: 0,
 });
 
 export const itemList = selector<itemProps[]>({

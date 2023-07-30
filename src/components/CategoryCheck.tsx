@@ -31,13 +31,11 @@ const categoryList = [
 ];
 export const CategoryCheck = () => {
   const [page, setPage] = useState(1);
+  const [items, setItems] = useState<itemProps[]>([]);
+  const max = items.length;
+  const [checkedList, setCheckedList] = useState<Array<string>>([]);
   const limit = 4;
   const offset = (page - 1) * limit;
-  const [items, setItems] = useState<itemProps[]>([]);
-  useEffect(() => {
-    setItems(itemData);
-  }, []);
-  const [checkedList, setCheckedList] = useState<Array<string>>([]);
   const handleSingleCheck = (checked: boolean, item: string) => {
     if (checked) {
       setCheckedList((prev) => [...prev, item]);
@@ -62,6 +60,7 @@ export const CategoryCheck = () => {
   const userId = JSON.parse(localStorage.getItem("user")).email;
   const baskets = JSON.parse(localStorage.getItem(userId)) || [];
   const [wish, setWish] = useRecoilState(WishState);
+
   useEffect(() => {
     setItems(itemData);
   }, [wish]);
@@ -75,26 +74,11 @@ export const CategoryCheck = () => {
     }
     localStorage.setItem(userId, JSON.stringify(baskets));
   };
-  // const [count, setCount] = useRecoilState(DayCountState);
-  // const selectIndex = (totalIndex: number, selectingNumber: number) => {
-  //   const randomIndexArray = [];
-  //   for (let i = 0; i < selectingNumber; i++) {
-  //     //check if there is any duplicate index
-  //     const randomNum = Math.floor(Math.random() * totalIndex);
-  //     if (randomIndexArray.indexOf(randomNum) === -1) {
-  //       randomIndexArray.push(randomNum);
-  //     } else {
-  //       //if the randomNum is already in the array retry
-  //       i--;
-  //     }
-  //   }
-  //   return randomIndexArray;
-  // };
 
   return (
     <div>
       <OpenTag>
-        <Counter />
+        <Counter checkedList={total} items={max} itemsList={filterItem} />
         <CategoryDiv>
           <Ptag>카테고리</Ptag>
         </CategoryDiv>
@@ -176,14 +160,16 @@ export const CategoryCheck = () => {
                     <Select>카테고리를 골라 주세요</Select>
                   )}
                 </MainContainer>
-                <div>
-                  <Pagination
-                    total={total}
-                    limit={limit}
-                    page={page}
-                    setPage={setPage}
-                  />
-                </div>
+                {filterItem.length > 0 ? (
+                  <div>
+                    <Pagination
+                      total={total}
+                      limit={limit}
+                      page={page}
+                      setPage={setPage}
+                    />
+                  </div>
+                ) : null}
               </div>
             </CardContainer>
           </ItemContainer>
