@@ -35,7 +35,7 @@
 
 - 랜덤 선택 기능
 
-![search](https://github.com/bidanee/random-shop/assets/110444526/dd678977-0b67-47b7-9acc-193ed2cd0a35)
+https://github.com/bidanee/random-shop/assets/110444526/dd678977-0b67-47b7-9acc-193ed2cd0a35
 
 
 
