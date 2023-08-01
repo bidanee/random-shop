@@ -15,7 +15,7 @@ const ConfirmModal = ({
 }: ConfirmProps) => {
   return (
     <dialog
-      className="relative w-10/12 py-16 rounded-lg shadow-md text-neutral-600"
+      className="relative w-10/12 py-8 rounded-lg shadow-md text-neutral-600"
       ref={dialogRef}
     >
       <form method="dialog">

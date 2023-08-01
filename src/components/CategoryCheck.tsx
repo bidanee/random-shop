@@ -17,7 +17,7 @@ import { itemProps } from "../page/ChoiceItemPage";
 import Pagination from "./Pagination";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { WishState } from "../service/atoms";
+import { ItemsState, WishState } from "../service/atoms";
 import { Counter } from "../components/DayCount";
 import styled from "styled-components";
 // import Pagination from "./Pagination";
@@ -31,7 +31,7 @@ const categoryList = [
 ];
 export const CategoryCheck = () => {
   const [page, setPage] = useState(1);
-  const [items, setItems] = useState<itemProps[]>([]);
+  const [items, setItems] = useRecoilState<itemProps[]>(ItemsState);
   const max = items.length;
   const [checkedList, setCheckedList] = useState<Array<string>>([]);
   const limit = 4;
@@ -78,7 +78,7 @@ export const CategoryCheck = () => {
   return (
     <div>
       <OpenTag>
-        <Counter checkedList={total} items={max} itemsList={filterItem} />
+        <Counter checkedList={total} itemsList={max} />
         <CategoryDiv>
           <Ptag>카테고리</Ptag>
         </CategoryDiv>

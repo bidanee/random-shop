@@ -7,8 +7,9 @@ import { auth } from "../../../firebase/firebaseSetup";
 const Header = () => {
   const [displayName, setDisplayName] = useState("");
   const navigate = useNavigate();
-  const isLoggedIn = JSON.parse(localStorage.getItem("login"));
+  // const isLoggedIn = JSON.parse(localStorage.getItem("login"));
 
+  const currentUser = auth.currentUser;
   const handleLogout = () => {
     auth
       .signOut()
@@ -31,7 +32,7 @@ const Header = () => {
 
   return (
     <>
-      {isLoggedIn ? (
+      {currentUser ? (
         <div className=" flex items-center w-full p-0 bg-base-100 py-4 px-6 shadow-md">
           <div className="flex-1">
             <button

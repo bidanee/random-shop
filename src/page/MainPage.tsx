@@ -20,6 +20,7 @@ import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { WishState } from "../service/atoms";
 import styled from "styled-components";
+import { auth } from "../firebase/firebaseSetup";
 
 const Main = () => {
   const [items, setItems] = useState<itemProps[]>([]);
@@ -28,7 +29,8 @@ const Main = () => {
     return i.like === true;
   });
   //wishItem
-  const userId = JSON.parse(localStorage.getItem("user")).email;
+  const userId = auth.currentUser.email;
+  // const userId = JSON.parse(localStorage.getItem("user")).email;
   const baskets = JSON.parse(localStorage.getItem(userId)) || [];
   const [wish, setWish] = useRecoilState(WishState);
   useEffect(() => {

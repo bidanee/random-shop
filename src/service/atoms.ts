@@ -45,15 +45,7 @@ export const CountState = atom({
   default: 0,
 });
 
-export const itemList = selector<itemProps[]>({
-  key: "ItemList",
-  get: async () => {
-    try {
-      const res = await fetch("http://localhost:5173/data/itemData.json");
-      return await res.json();
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
-  },
+export const ItemsState = atom({
+  key: "itmes",
+  default: [],
 });
