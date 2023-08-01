@@ -4,12 +4,12 @@ import Search from "./Search";
 import { useEffect, useState } from "react";
 import { auth } from "../../../firebase/firebaseSetup";
 
-const Header = () => {
+const Header = async () => {
   const [displayName, setDisplayName] = useState("");
   const navigate = useNavigate();
   // const isLoggedIn = JSON.parse(localStorage.getItem("login"));
 
-  const currentUser = auth.currentUser;
+  const currentUser = await auth.currentUser;
   const handleLogout = () => {
     auth
       .signOut()
