@@ -33,6 +33,12 @@
 - 검색 기능 과 장바구니 기능
   ![search](https://github.com/bidanee/random-shop/assets/110444526/cf59af6b-04d8-4c5a-9c03-284059e2d9fc)
 
+- 랜덤 선택 기능
+
+https://github.com/bidanee/random-shop/assets/110444526/dd678977-0b67-47b7-9acc-193ed2cd0a35
+
+
+
 ## 🚀  Project 회고
 
 프로젝트 초반에 firebase를 처음 접해봐서 시간읆 많이 잡아먹었다.
