@@ -122,7 +122,7 @@ const Cart = () => {
                   <Total>총</Total>
                   <span>{TotalPrice}원</span>
                 </PriceContainer>
-                <button>구매하기</button>
+                <button className="btn btn-md w-32 btn-accent">구매하기</button>
               </TotalContainer>
             ) : null}
           </CartItemContainer>
