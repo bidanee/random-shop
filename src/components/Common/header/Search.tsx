@@ -10,7 +10,7 @@ const Search = () => {
   };
   const fetchData = () => {
     return fetch(
-      "/Users/leedanbi/Desktop/random-shop/public/data/itemData.json",
+      "https://random-shop-git-master-bidanee.vercel.app/data/itemData.json",
       { method: "GET" }
     )
       .then((res) => res.json())
