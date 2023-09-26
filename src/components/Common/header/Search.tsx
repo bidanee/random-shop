@@ -9,7 +9,10 @@ const Search = () => {
     setKeyword(e.currentTarget.value);
   };
   const fetchData = () => {
-    return fetch("http://localhost:5173/data/itemData.json", { method: "GET" })
+    return fetch(
+      "/Users/leedanbi/Desktop/random-shop/public/data/itemData.json",
+      { method: "GET" }
+    )
       .then((res) => res.json())
       .then((data) => data);
   };
