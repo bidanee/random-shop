@@ -69,7 +69,7 @@ const Header = () => {
         </div>
       ) : (
         <div className="flex items-center justify-center text-2xl w-full bg-base-100 p-3 text-blue-300 shadow-md">
-          페이지를 보시려면 로그인이 필요합니다.
+          테스트 아이디 : 100@naver.com , 비밀번호 : 123qwe!!
         </div>
       )}
     </>
